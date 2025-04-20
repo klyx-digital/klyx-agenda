@@ -5,10 +5,6 @@ import { SelectField, TextField } from '@/components/Fields'
 import { Logo } from '@/components/Logo'
 import { SlimLayout } from '@/components/SlimLayout'
 
-export const metadata = {
-  title: 'Sign Up',
-}
-
 export default function Register() {
   return (
     <SlimLayout>
@@ -18,31 +14,30 @@ export default function Register() {
         </Link>
       </div>
       <h2 className="mt-20 text-lg font-semibold text-gray-900">
-        Get started for free
+        Créez votre compte gratuitement
       </h2>
       <p className="mt-2 text-sm text-gray-700">
-        Already registered?{' '}
+        Vous avez déjà un compte ?{' '}
         <Link
           href="/login"
           className="font-medium text-blue-600 hover:underline"
         >
-          Sign in
+          Connectez-vous ici
         </Link>{' '}
-        to your account.
       </p>
       <form
         action="#"
         className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-2"
       >
         <TextField
-          label="First name"
+          label="Prénom"
           name="first_name"
           type="text"
           autoComplete="given-name"
           required
         />
         <TextField
-          label="Last name"
+          label="Nom"
           name="last_name"
           type="text"
           autoComplete="family-name"
@@ -50,7 +45,7 @@ export default function Register() {
         />
         <TextField
           className="col-span-full"
-          label="Email address"
+          label="Adresse email"
           name="email"
           type="email"
           autoComplete="email"
@@ -58,7 +53,7 @@ export default function Register() {
         />
         <TextField
           className="col-span-full"
-          label="Password"
+          label="Mot de passe"
           name="password"
           type="password"
           autoComplete="new-password"
@@ -66,18 +61,19 @@ export default function Register() {
         />
         <SelectField
           className="col-span-full"
-          label="How did you hear about us?"
+          label="Comment avez-vous connu Klyx ?"
           name="referral_source"
         >
-          <option>AltaVista search</option>
-          <option>Super Bowl commercial</option>
-          <option>Our route 34 city bus ad</option>
-          <option>The “Never Use This” podcast</option>
+          <option>Bouche-à-oreille</option>
+          <option>Réseaux sociaux</option>
+          <option>Recherche Google</option>
+          <option>Recommandation d’un client</option>
+          <option>Autre</option>
         </SelectField>
         <div className="col-span-full">
           <Button type="submit" variant="solid" color="blue" className="w-full">
             <span>
-              Sign up <span aria-hidden="true">&rarr;</span>
+              S’inscrire <span aria-hidden="true">&rarr;</span>
             </span>
           </Button>
         </div>

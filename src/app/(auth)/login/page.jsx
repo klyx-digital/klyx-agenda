@@ -5,10 +5,6 @@ import { TextField } from '@/components/Fields'
 import { Logo } from '@/components/Logo'
 import { SlimLayout } from '@/components/SlimLayout'
 
-export const metadata = {
-  title: 'Sign In',
-}
-
 export default function Login() {
   return (
     <SlimLayout>
@@ -18,28 +14,28 @@ export default function Login() {
         </Link>
       </div>
       <h2 className="mt-20 text-lg font-semibold text-gray-900">
-        Sign in to your account
+        Connectez-vous à votre compte
       </h2>
       <p className="mt-2 text-sm text-gray-700">
-        Don’t have an account?{' '}
+        Pas encore inscrit ?{' '}
         <Link
           href="/register"
           className="font-medium text-blue-600 hover:underline"
         >
-          Sign up
+          Créez un compte
         </Link>{' '}
-        for a free trial.
+        gratuitement
       </p>
       <form action="#" className="mt-10 grid grid-cols-1 gap-y-8">
         <TextField
-          label="Email address"
+          label="Adresse email"
           name="email"
           type="email"
           autoComplete="email"
           required
         />
         <TextField
-          label="Password"
+          label="Mot de passe"
           name="password"
           type="password"
           autoComplete="current-password"
@@ -48,7 +44,7 @@ export default function Login() {
         <div>
           <Button type="submit" variant="solid" color="blue" className="w-full">
             <span>
-              Sign in <span aria-hidden="true">&rarr;</span>
+              Se connecter<span aria-hidden="true">&rarr;</span>
             </span>
           </Button>
         </div>
