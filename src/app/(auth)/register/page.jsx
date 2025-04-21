@@ -1,9 +1,9 @@
 import Link from 'next/link'
 
-import { Button } from '@/components/Button'
-import { SelectField, TextField } from '@/components/Fields'
+import { Button } from '@/components/ui/Button'
+import { SelectField, TextField } from '@/components/ui/Fields'
 import { Logo } from '@/components/Logo'
-import { SlimLayout } from '@/components/SlimLayout'
+import { SlimLayout } from '@/components/ui/SlimLayout'
 
 export default function Register() {
   return (

@@ -5,50 +5,14 @@ import Image from 'next/image'
 import { Tab, TabGroup, TabList, TabPanel, TabPanels } from '@headlessui/react'
 import clsx from 'clsx'
 
-import { Container } from '@/components/Container'
+import { Container } from '@/components/ui/Container'
 
 const features = [
   {
-    name: 'Gestion des disponibilités  ',
-    summary:
-      'Gérez vos créneaux en ligne et restez maître de votre emploi du temps.',
+    name: 'Gestion des disponibilités avancée',
+    summary: 'Maîtrisez votre emploi du temps en toute simplicité.',
     description:
-      'Définissez vos horaires de disponibilité, bloquez des périodes, gérez vos jours de repos ou vos absences exceptionnelles. Vos clients ne peuvent réserver que quand vous êtes vraiment dispo — tout est automatisé.',
-    icon: function ReportingIcon() {
-      let id = useId()
-      return (
-        <>
-          <defs>
-            <linearGradient
-              id={id}
-              x1="11.5"
-              y1={18}
-              x2={36}
-              y2="15.5"
-              gradientUnits="userSpaceOnUse"
-            >
-              <stop offset=".194" stopColor="#fff" />
-              <stop offset={1} stopColor="#6692F1" />
-            </linearGradient>
-          </defs>
-          <path
-            d="m30 15-4 5-4-11-4 18-4-11-4 7-4-5"
-            stroke={`url(#${id})`}
-            strokeWidth={2}
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-        </>
-      )
-    },
-  },
-  {
-    name: 'Réservation en ligne 24/7 ',
-    summary:
-      'Permettez à vos clients de réserver en toute autonomie, à tout moment.',
-    description:
-      'Votre page de réservation fonctionne 24h/24. Elle présente vos services, vos tarifs et vos créneaux libres. Vos clients réservent en 3 clics, même pendant votre sommeil. Vous recevez une confirmation instantanée.',
-
+      'Définissez vos horaires, bloquez des périodes, ajoutez des absences exceptionnelles. Vos clients ne voient que vos créneaux réellement disponibles.',
     icon: function InventoryIcon() {
       return (
         <>
@@ -71,11 +35,31 @@ const features = [
     },
   },
   {
-    name: 'Confirmation & rappels automatiques  ',
-    summary:
-      'Réduisez les oublis grâce à des rappels automatiques avant chaque RDV.',
+    name: 'Réservation autonome 24h/24',
+    summary: 'Laissez vos clients réserver, même quand vous dormez.',
     description:
-      'À chaque réservation, vos clients reçoivent une confirmation par email. Puis, un rappel automatique leur est envoyé par SMS ou email avant le rendez-vous. Moins de RDV manqués, plus de professionnalisme.',
+      'Votre page personnalisée présente vos services, tarifs et créneaux. Accessible à tout moment, elle permet de réserver en autonomie complète.',
+
+    icon: function ClockOnlineIcon() {
+      return (
+        <>
+          <circle cx="18" cy="18" r="8" stroke="#fff" strokeWidth="2" />
+          <path
+            d="M18 14v4l2 2"
+            stroke="#fff"
+            strokeLinecap="round"
+            strokeWidth="2"
+          />
+          <path d="M6 6h24v24H6z" opacity="0.2" fill="#fff" />
+        </>
+      )
+    },
+  },
+  {
+    name: 'Notifications automatiques & confirmations',
+    summary: 'Offrez une expérience fluide à vos clients.',
+    description:
+      'Chaque client reçoit une confirmation immédiate après réservation, suivie d’un rappel automatique avant le rendez-vous.',
 
     icon: function ContactsIcon() {
       return (
@@ -182,13 +166,12 @@ export function SecondaryFeatures() {
       <Container>
         <div className="mx-auto max-w-2xl md:text-center">
           <h2 className="font-display text-3xl tracking-tight text-slate-900 sm:text-4xl">
-            Fonctionnalités essentielles pour gérer vos rendez-vous en toute
-            simplicité
+            Des outils essentiels pour rester maître de votre planning
           </h2>
           <p className="mt-4 text-lg tracking-tight text-slate-700">
-            Klyx vous offre les outils indispensables pour automatiser votre
-            agenda, offrir une expérience fluide à vos clients et ne plus perdre
-            de temps.
+            Klyx vous aide à automatiser votre agenda tout en gardant un
+            contrôle total sur votre activité. Offrez à vos clients une
+            expérience fluide et gagnez du temps au quotidien.
           </p>
         </div>
         <FeaturesMobile />

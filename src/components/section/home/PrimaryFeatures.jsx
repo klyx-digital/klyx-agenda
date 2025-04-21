@@ -5,7 +5,7 @@ import Image from 'next/image'
 import { Tab, TabGroup, TabList, TabPanel, TabPanels } from '@headlessui/react'
 import clsx from 'clsx'
 
-import { Container } from '@/components/Container'
+import { Container } from '@/components/ui/Container'
 import backgroundImage from '@/images/background-features.jpg'
 import paypal from '@/images/screenshots/paypal.jpg'
 import rdv from '@/images/screenshots/rdv.jpg'
@@ -14,27 +14,27 @@ import reserved from '@/images/screenshots/reserved.jpg'
 
 const features = [
   {
-    title: 'Réservation en ligne simple et fluide ',
+    title: 'Réservation en ligne simple et rapide',
     description:
-      'Permettez à vos clients de réserver un créneau en quelques clics, 24h/24. Fini les allers-retours de messages : tout est automatisé.',
+      'Vos clients prennent rendez-vous en quelques clics, à tout moment. Plus besoin d’échanger des messages ou de jongler avec votre agenda.',
     image: reserved,
   },
   {
-    title: 'Paiement sécurisé via Stripe ou PayPal ',
+    title: 'Paiement en ligne sécurisé',
     description:
-      'Encaissez vos rendez-vous en ligne facilement, grâce aux paiements intégrés. Vos clients règlent à l’avance, vous gagnez en sérénité.',
+      'Proposez le paiement via Stripe ou PayPal. Les clients règlent à l’avance, vous réduisez les annulations et gagnez en sérénité.',
     image: paypal,
   },
   {
-    title: 'Rappels automatiques par email et SMS  ',
+    title: 'Rappels automatiques par email & SMS',
     description:
-      'Réduisez les absences clients grâce à des rappels automatiques envoyés avant chaque rendez-vous, par email ou SMS.',
+      'Des rappels envoyés automatiquement à vos clients avant chaque rendez-vous. Moins d’oublis, plus de ponctualité.',
     image: rapelle,
   },
   {
-    title: 'Tableau de bord clair pour tout suivre ',
+    title: 'Tableau de bord clair & complet',
     description:
-      'Suivez tous vos rendez-vous, paiements reçus et créneaux disponibles depuis une interface simple, pensée pour les pros.',
+      'Visualisez vos rendez-vous, paiements et créneaux disponibles en un coup d’œil. Un vrai assistant pro au quotidien.',
     image: rdv,
   },
 ]
@@ -74,12 +74,13 @@ export function PrimaryFeatures() {
       <Container className="relative">
         <div className="max-w-2xl md:mx-auto md:text-center xl:max-w-none">
           <h2 className="font-display text-3xl tracking-tight text-white sm:text-4xl md:text-5xl">
-            Simplifiez votre gestion, développez votre activité
+            Simplifiez la gestion, développez votre activité
           </h2>
           <p className="mt-6 text-lg tracking-tight text-blue-100">
             Klyx centralise tout ce dont vous avez besoin pour gérer vos
-            rendez-vous en ligne, accepter les paiements et éviter les oublis
-            clients.
+            rendez-vous, encaisser vos paiements et éviter les oublis. Une
+            solution pensée pour les indépendants, simple à utiliser, disponible
+            partout, tout le temps.
           </p>
         </div>
         <TabGroup

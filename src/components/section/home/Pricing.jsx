@@ -1,7 +1,7 @@
 import clsx from 'clsx'
 
-import { Button } from '@/components/Button'
-import { Container } from '@/components/Container'
+import { Button } from '@/components/ui/Button'
+import { Container } from '@/components/ui/Container'
 
 function SwirlyDoodle(props) {
   return (
@@ -88,7 +88,7 @@ function Plan({ name, price, description, href, features, featured = false }) {
         className="mt-8"
         aria-label={`Get started with the ${name} plan for ${price}`}
       >
-        Get started
+        Créer un compte
       </Button>
     </section>
   )
@@ -123,25 +123,26 @@ export function Pricing() {
             description="Parfait pour démarrer et tester la plateforme."
             href="/register"
             features={[
-              'Jusqu’à 10 réservations / mois',
-              'Page de réservation simple',
-              'Gestion des disponibilités',
-              'Notifications par e-mail',
+              'Jusqu’à 50 réservations / mois',
+              'Page de réservation personnalisée',
+              'Gestion des disponibilités (jours / horaires)',
+              'Notifications automatiques par e-mail',
             ]}
           />
           <Plan
             featured
-            name="Small business"
+            name="Premium"
             price="19€/mois"
             description="Idéal pour les pros qui veulent gagner du temps."
             href="/register"
             features={[
               'Rendez-vous illimités',
-              'Paiement en ligne (Stripe / PayPal)',
+              'Paiement en ligne via Stripe ou PayPal',
               'Rappels automatiques (email + SMS)',
               'Synchronisation Google Agenda',
               'Historique des clients et RDV',
               'Support client prioritaire',
+              ,
             ]}
           />
         </div>
