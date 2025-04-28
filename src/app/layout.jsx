@@ -4,7 +4,7 @@ import clsx from 'clsx'
 import '@/styles/tailwind.css'
 
 export const metadata = {
-  title: 'Klyx',
+  title: 'Klyx Agenda',
   description:
     'Klyx vous aide à gérer vos rendez-vous, encaisser vos paiements en ligne et envoyer des rappels automatiques. Une solution tout-en-un, simple et efficace.',
 }

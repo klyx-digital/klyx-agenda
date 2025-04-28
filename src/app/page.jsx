@@ -1,12 +1,12 @@
-import { CallToAction } from '@/components/layout/CallToAction'
-import { Faqs } from '@/components/section/home/Faqs'
-import { Footer } from '@/components/layout/Footer'
-import { Header } from '@/components/layout/Header'
-import { Hero } from '@/components/section/home/Hero'
-import { Pricing } from '@/components/section/home/Pricing'
-import { PrimaryFeatures } from '@/components/section/home/PrimaryFeatures'
-import { SecondaryFeatures } from '@/components/section/home/SecondaryFeatures'
-import { Testimonials } from '@/components/section/home/Testimonials'
+import { CallToAction } from '@/components/page/layout/CallToAction'
+import { Faqs } from '@/components/page/home/Faqs'
+import { Footer } from '@/components/page/layout/Footer'
+import { Header } from '@/components/page/layout/Header'
+import { Hero } from '@/components/page/home/Hero'
+import { Pricing } from '@/components/page/home/Pricing'
+import { PrimaryFeatures } from '@/components/page/home/PrimaryFeatures'
+import { SecondaryFeatures } from '@/components/page/home/SecondaryFeatures'
+import { Testimonials } from '@/components/page/home/Testimonials'
 
 export default function Home() {
   return (

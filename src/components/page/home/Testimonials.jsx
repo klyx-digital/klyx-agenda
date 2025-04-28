@@ -1,5 +1,4 @@
 import Image from 'next/image'
-
 import { Container } from '@/components/ui/Container'
 import avatarImage1 from '@/images/avatars/avatar-1.png'
 import avatarImage2 from '@/images/avatars/avatar-2.png'
