@@ -1,11 +1,23 @@
-import Link from 'next/link'
+'use client'
 
+import Link from 'next/link'
 import { Button } from '@/components/ui/Button'
-import { SelectField, TextField } from '@/components/ui/Fields'
+import { TextField } from '@/components/ui/Fields'
 import { Logo } from '@/components/Logo'
 import { SlimLayout } from '@/components/ui/SlimLayout'
+import { useActionState } from 'react'
+import { registerUser } from './action'
 
 export default function Register() {
+  const initialState = {
+    errors: {},
+    message: null,
+  }
+  const [state, formAction, isPending] = useActionState(
+    registerUser,
+    initialState,
+  )
+
   return (
     <SlimLayout>
       <div className="flex">
@@ -26,54 +38,67 @@ export default function Register() {
         </Link>{' '}
       </p>
       <form
-        action="#"
+        action={formAction}
         className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-2"
       >
         <TextField
           label="Prénom"
-          name="first_name"
+          name="firstName"
           type="text"
           autoComplete="given-name"
-          required
         />
+        {state.errors?.firstName && (
+          <div className="mt-2 text-sm text-red-600">
+            {state.errors.firstName[0]}
+          </div>
+        )}
         <TextField
           label="Nom"
-          name="last_name"
+          name="lastName"
           type="text"
           autoComplete="family-name"
-          required
         />
+        {state.errors?.lastName && (
+          <div className="mt-2 text-sm text-red-600">
+            {state.errors.lastName[0]}
+          </div>
+        )}
         <TextField
           className="col-span-full"
           label="Adresse email"
           name="email"
           type="email"
           autoComplete="email"
-          required
         />
+        {state.errors?.email && (
+          <div className="mt-2 text-sm text-red-600">
+            {state.errors.email[0]}
+          </div>
+        )}
         <TextField
           className="col-span-full"
           label="Mot de passe"
           name="password"
           type="password"
           autoComplete="new-password"
-          required
         />
-        <SelectField
-          className="col-span-full"
-          label="Comment avez-vous connu Klyx ?"
-          name="referral_source"
-        >
-          <option>Bouche-à-oreille</option>
-          <option>Réseaux sociaux</option>
-          <option>Recherche Google</option>
-          <option>Recommandation d’un client</option>
-          <option>Autre</option>
-        </SelectField>
+        {state.errors?.password && (
+          <div className="mt-2 text-sm text-red-600">
+            {state.errors.password[0]}
+          </div>
+        )}
+
         <div className="col-span-full">
-          <Button type="submit" variant="solid" color="blue" className="w-full">
+          <Button
+            disabled={isPending}
+            type="submit"
+            variant="solid"
+            color="blue"
+            className="w-full"
+          >
             <span>
-              S’inscrire <span aria-hidden="true">&rarr;</span>
+              {isPending ? 'Inscription...' : 'S’inscrire'}
+              <span aria-hidden="true">&rarr;</span>
             </span>
           </Button>
         </div>
