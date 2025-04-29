@@ -1,7 +1,11 @@
+import Stat from '@/components/page/dashboard/Stat'
+import Feeds from '@/components/page/dashboard/Feeds'
+
 export default function Page() {
   return (
-    <div>
-      <h1>Connexion reussie</h1>
-    </div>
+    <section>
+      <Stat />
+      <Feeds />
+    </section>
   )
 }

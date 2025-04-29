@@ -4,11 +4,16 @@ import * as Headless from '@headlessui/react'
 import clsx from 'clsx'
 import { LayoutGroup, motion } from 'framer-motion'
 import React, { forwardRef, useId } from 'react'
-import { TouchTarget } from './button'
+import { TouchTarget } from './Button'
 import { Link } from './link'
 
 export function Sidebar({ className, ...props }) {
-  return <nav {...props} className={clsx(className, 'flex h-full min-h-0 flex-col')} />
+  return (
+    <nav
+      {...props}
+      className={clsx(className, 'flex h-full min-h-0 flex-col')}
+    />
+  )
 }
 
 export function SidebarHeader({ className, ...props }) {
@@ -17,7 +22,7 @@ export function SidebarHeader({ className, ...props }) {
       {...props}
       className={clsx(
         className,
-        'flex flex-col border-b border-zinc-950/5 p-4 dark:border-white/5 [&>[data-slot=section]+[data-slot=section]]:mt-2.5'
+        'flex flex-col border-b border-zinc-950/5 p-4 dark:border-white/5 [&>[data-slot=section]+[data-slot=section]]:mt-2.5',
       )}
     />
   )
@@ -29,7 +34,7 @@ export function SidebarBody({ className, ...props }) {
       {...props}
       className={clsx(
         className,
-        'flex flex-1 flex-col overflow-y-auto p-4 [&>[data-slot=section]+[data-slot=section]]:mt-8'
+        'flex flex-1 flex-col overflow-y-auto p-4 [&>[data-slot=section]+[data-slot=section]]:mt-8',
       )}
     />
   )
@@ -41,7 +46,7 @@ export function SidebarFooter({ className, ...props }) {
       {...props}
       className={clsx(
         className,
-        'flex flex-col border-t border-zinc-950/5 p-4 dark:border-white/5 [&>[data-slot=section]+[data-slot=section]]:mt-2.5'
+        'flex flex-col border-t border-zinc-950/5 p-4 dark:border-white/5 [&>[data-slot=section]+[data-slot=section]]:mt-2.5',
       )}
     />
   )
@@ -52,29 +57,53 @@ export function SidebarSection({ className, ...props }) {
 
   return (
     <LayoutGroup id={id}>
-      <div {...props} data-slot="section" className={clsx(className, 'flex flex-col gap-0.5')} />
+      <div
+        {...props}
+        data-slot="section"
+        className={clsx(className, 'flex flex-col gap-0.5')}
+      />
     </LayoutGroup>
   )
 }
 
 export function SidebarDivider({ className, ...props }) {
-  return <hr {...props} className={clsx(className, 'my-4 border-t border-zinc-950/5 lg:-mx-4 dark:border-white/5')} />
+  return (
+    <hr
+      {...props}
+      className={clsx(
+        className,
+        'my-4 border-t border-zinc-950/5 lg:-mx-4 dark:border-white/5',
+      )}
+    />
+  )
 }
 
 export function SidebarSpacer({ className, ...props }) {
-  return <div aria-hidden="true" {...props} className={clsx(className, 'mt-8 flex-1')} />
+  return (
+    <div
+      aria-hidden="true"
+      {...props}
+      className={clsx(className, 'mt-8 flex-1')}
+    />
+  )
 }
 
 export function SidebarHeading({ className, ...props }) {
   return (
-    <h3 {...props} className={clsx(className, 'mb-1 px-2 text-xs/6 font-medium text-zinc-500 dark:text-zinc-400')} />
+    <h3
+      {...props}
+      className={clsx(
+        className,
+        'mb-1 px-2 text-xs/6 font-medium text-zinc-500 dark:text-zinc-400',
+      )}
+    />
   )
 }
 
 export const SidebarItem = forwardRef(function SidebarItem(
   { current, className, children, ...props },
 
-  ref
+  ref,
 ) {
   let classes = clsx(
     // Base
@@ -95,7 +124,7 @@ export const SidebarItem = forwardRef(function SidebarItem(
     'dark:text-white dark:*:data-[slot=icon]:fill-zinc-400',
     'dark:data-hover:bg-white/5 dark:data-hover:*:data-[slot=icon]:fill-white',
     'dark:data-active:bg-white/5 dark:data-active:*:data-[slot=icon]:fill-white',
-    'dark:data-current:*:data-[slot=icon]:fill-white'
+    'dark:data-current:*:data-[slot=icon]:fill-white',
   )
 
   return (

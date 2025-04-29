@@ -24,9 +24,9 @@ const lexend = Lexend({
 export default function RootLayout({ children }) {
   return (
     <html
-      lang="en"
+      lang="fr"
       className={clsx(
-        'h-full scroll-smooth bg-white antialiased',
+        'h-full scroll-smooth bg-white text-black antialiased',
         inter.variable,
         lexend.variable,
       )}
