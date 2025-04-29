@@ -1,41 +1,42 @@
 import { ArrowDownIcon, ArrowUpIcon } from '@heroicons/react/20/solid'
 import {
-  CursorArrowRaysIcon,
-  EnvelopeOpenIcon,
-  UsersIcon,
+  CalendarIcon,
+  UserPlusIcon,
+  CurrencyEuroIcon,
+  ChatBubbleLeftEllipsisIcon,
 } from '@heroicons/react/24/outline'
 
 const stats = [
   {
     id: 1,
     name: 'Prochain RDV',
-    stat: '71,897',
-    icon: UsersIcon,
-    change: '122',
+    stat: '12 avril 2024, 14:30',
+    icon: CalendarIcon,
+    change: '3',
     changeType: 'increase',
   },
   {
     id: 2,
-    name: 'Nouveaux client',
-    stat: '58.16%',
-    icon: EnvelopeOpenIcon,
-    change: '5.4%',
+    name: 'Nouveaux clients',
+    stat: '24',
+    icon: UserPlusIcon,
+    change: '4',
     changeType: 'increase',
   },
   {
     id: 3,
-    name: 'Revenue',
-    stat: '24.57%',
-    icon: CursorArrowRaysIcon,
-    change: '3.2%',
-    changeType: 'decrease',
+    name: 'Revenus (€)',
+    stat: '5,430',
+    icon: CurrencyEuroIcon,
+    change: '12%',
+    changeType: 'increase',
   },
   {
     id: 4,
-    name: 'Message recent',
-    stat: '58.16%',
-    icon: EnvelopeOpenIcon,
-    change: '5.4%',
+    name: 'Messages récents',
+    stat: '58',
+    icon: ChatBubbleLeftEllipsisIcon,
+    change: '5',
     changeType: 'increase',
   },
 ]
@@ -60,7 +61,7 @@ export default function Stat() {
           >
             <dt>
               <div className="absolute rounded-md bg-indigo-500 p-3">
-                <item.icon aria-hidden="true" className="size-6 text-white" />
+                <item.icon aria-hidden="true" className="h-6 w-6 text-white" />
               </div>
               <p className="ml-16 truncate text-sm font-medium text-gray-500">
                 {item.name}
@@ -81,21 +82,21 @@ export default function Stat() {
                 {item.changeType === 'increase' ? (
                   <ArrowUpIcon
                     aria-hidden="true"
-                    className="size-5 shrink-0 self-center text-green-500"
+                    className="h-5 w-5 shrink-0 self-center text-green-500"
                   />
                 ) : (
                   <ArrowDownIcon
                     aria-hidden="true"
-                    className="size-5 shrink-0 self-center text-red-500"
+                    className="h-5 w-5 shrink-0 self-center text-red-500"
                   />
                 )}
 
                 <span className="sr-only">
                   {' '}
                   {item.changeType === 'increase'
-                    ? 'Increased'
-                    : 'Decreased'}{' '}
-                  by{' '}
+                    ? 'Augmentation'
+                    : 'Diminution'}{' '}
+                  de{' '}
                 </span>
                 {item.change}
               </p>
@@ -105,7 +106,7 @@ export default function Stat() {
                     href="#"
                     className="font-medium text-indigo-600 hover:text-indigo-500"
                   >
-                    View all<span className="sr-only"> {item.name} stats</span>
+                    Voir tout<span className="sr-only"> {item.name} stats</span>
                   </a>
                 </div>
               </div>
