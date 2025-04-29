@@ -23,7 +23,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         const user = await prisma.user.findUnique({
           where: { email },
         })
-
+        console.log(user)
         if (!user) {
           return null
         }
@@ -34,11 +34,17 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
           return null
         }
 
-        return user
+        return {
+          id: user.id,
+          email: user.email,
+        }
       },
     }),
   ],
   pages: {
     signIn: '/login',
+  },
+  session: {
+    strategy: 'jwt',
   },
 })

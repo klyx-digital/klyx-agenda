@@ -1,4 +1,4 @@
-import { Avatar } from '@/components/ui/avatar'
+import { SignOut } from './signout-button'
 import {
   Dropdown,
   DropdownButton,
@@ -66,9 +66,11 @@ export function SidebarDashboard({ children }) {
                   <DropdownLabel>Privacy policy</DropdownLabel>
                 </DropdownItem>
                 <DropdownDivider />
-                <DropdownItem href="/logout">
+                <DropdownItem>
                   <ArrowRightStartOnRectangleIcon />
-                  <DropdownLabel>Déconnexion</DropdownLabel>
+                  <DropdownLabel>
+                    <SignOut />
+                  </DropdownLabel>
                 </DropdownItem>
               </DropdownMenu>
             </Dropdown>
@@ -137,9 +139,11 @@ export function SidebarDashboard({ children }) {
                   <DropdownLabel>Privacy policy</DropdownLabel>
                 </DropdownItem>
                 <DropdownDivider />
-                <DropdownItem href="/logout">
+                <DropdownItem>
                   <ArrowRightStartOnRectangleIcon />
-                  <DropdownLabel>Sign out</DropdownLabel>
+                  <DropdownLabel>
+                    <SignOut />
+                  </DropdownLabel>
                 </DropdownItem>
               </DropdownMenu>
             </Dropdown>
