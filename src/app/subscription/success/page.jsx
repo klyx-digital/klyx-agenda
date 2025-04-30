@@ -16,7 +16,7 @@ export default async function Success({ searchParams }) {
   })
 
   if (status === 'open') {
-    return redirect('/')
+    return redirect('/dashboard')
   }
 
   if (status === 'complete') {
