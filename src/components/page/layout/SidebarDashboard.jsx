@@ -1,4 +1,5 @@
-import { SignOut } from './signout-button'
+'use client'
+import { signOut } from 'next-auth/react'
 import {
   Dropdown,
   DropdownButton,
@@ -66,11 +67,9 @@ export function SidebarDashboard({ children }) {
                   <DropdownLabel>Privacy policy</DropdownLabel>
                 </DropdownItem>
                 <DropdownDivider />
-                <DropdownItem>
+                <DropdownItem onClick={() => signOut()}>
                   <ArrowRightStartOnRectangleIcon />
-                  <DropdownLabel>
-                    <SignOut />
-                  </DropdownLabel>
+                  <DropdownLabel>Déconnexion</DropdownLabel>
                 </DropdownItem>
               </DropdownMenu>
             </Dropdown>
@@ -139,11 +138,9 @@ export function SidebarDashboard({ children }) {
                   <DropdownLabel>Privacy policy</DropdownLabel>
                 </DropdownItem>
                 <DropdownDivider />
-                <DropdownItem>
+                <DropdownItem onClick={() => signOut()}>
                   <ArrowRightStartOnRectangleIcon />
-                  <DropdownLabel>
-                    <SignOut />
-                  </DropdownLabel>
+                  <DropdownLabel>Déconnexion</DropdownLabel>
                 </DropdownItem>
               </DropdownMenu>
             </Dropdown>

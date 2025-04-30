@@ -48,9 +48,7 @@ function classNames(...classes) {
 export default function Stat() {
   return (
     <div>
-      <h1 className="text-base font-semibold text-gray-900">
-        Bienvenue, Erica
-      </h1>
+      <h1 className="text-base font-semibold text-gray-900">Bienvenue</h1>
       <p>Voici votre résumé du jour</p>
 
       <dl className="mt-5 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
