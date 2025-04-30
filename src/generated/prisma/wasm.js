@@ -122,7 +122,73 @@ exports.Prisma.UserScalarFieldEnum = {
   email: 'email',
   password: 'password',
   firstName: 'firstName',
-  lastName: 'lastName'
+  lastName: 'lastName',
+  slug: 'slug',
+  role: 'role',
+  reservations: 'reservations',
+  createdAt: 'createdAt'
+};
+
+exports.Prisma.ServiceScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  duration: 'duration',
+  price: 'price',
+  userId: 'userId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.AvailabilityScalarFieldEnum = {
+  id: 'id',
+  dayOfWeek: 'dayOfWeek',
+  startTime: 'startTime',
+  endTime: 'endTime',
+  userId: 'userId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.RdvScalarFieldEnum = {
+  id: 'id',
+  date: 'date',
+  clientName: 'clientName',
+  clientEmail: 'clientEmail',
+  clientPhone: 'clientPhone',
+  paid: 'paid',
+  serviceId: 'serviceId',
+  userId: 'userId',
+  clientId: 'clientId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.ClientScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  email: 'email',
+  phone: 'phone',
+  userId: 'userId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.MessageScalarFieldEnum = {
+  id: 'id',
+  content: 'content',
+  from: 'from',
+  userId: 'userId',
+  createdAt: 'createdAt'
+};
+
+exports.Prisma.PaymentScalarFieldEnum = {
+  id: 'id',
+  stripeId: 'stripeId',
+  amount: 'amount',
+  status: 'status',
+  rdvId: 'rdvId',
+  userId: 'userId',
+  createdAt: 'createdAt'
 };
 
 exports.Prisma.SortOrder = {
@@ -139,10 +205,24 @@ exports.Prisma.NullsOrder = {
   first: 'first',
   last: 'last'
 };
+exports.Role = exports.$Enums.Role = {
+  PRO: 'PRO',
+  ADMIN: 'ADMIN'
+};
 
+exports.Sender = exports.$Enums.Sender = {
+  CLIENT: 'CLIENT',
+  PRO: 'PRO'
+};
 
 exports.Prisma.ModelName = {
-  User: 'User'
+  User: 'User',
+  Service: 'Service',
+  Availability: 'Availability',
+  Rdv: 'Rdv',
+  Client: 'Client',
+  Message: 'Message',
+  Payment: 'Payment'
 };
 
 /**

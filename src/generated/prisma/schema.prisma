@@ -15,9 +15,103 @@ datasource db {
 }
 
 model User {
-  id        String  @id @default(cuid())
-  email     String  @unique
-  password  String
-  firstName String?
-  lastName  String?
+  id           String         @id @default(cuid())
+  email        String         @unique
+  password     String
+  firstName    String?
+  lastName     String?
+  slug         String?        @unique
+  role         Role           @default(PRO)
+  services     Service[]
+  dispos       Availability[]
+  rdvs         Rdv[]
+  clients      Client[]
+  messages     Message[]
+  payments     Payment[]
+  reservations Int            @default(0) // compteur mensuel pour l'offre gratuite
+  createdAt    DateTime       @default(now())
+}
+
+enum Role {
+  PRO
+  ADMIN
+}
+
+model Service {
+  id        String   @id @default(cuid())
+  name      String
+  duration  Int? // en minutes
+  price     Float
+  user      User     @relation(fields: [userId], references: [id])
+  userId    String
+  rdvs      Rdv[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Availability {
+  id        String   @id @default(cuid())
+  dayOfWeek Int // 0 (dimanche) à 6 (samedi)
+  startTime String // "09:00"
+  endTime   String // "17:00"
+  user      User     @relation(fields: [userId], references: [id])
+  userId    String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Rdv {
+  id          String   @id @default(cuid())
+  date        DateTime
+  clientName  String
+  clientEmail String
+  clientPhone String
+  paid        Boolean  @default(false)
+  service     Service  @relation(fields: [serviceId], references: [id])
+  serviceId   String
+  user        User     @relation(fields: [userId], references: [id])
+  userId      String
+  client      Client?  @relation(fields: [clientId], references: [id])
+  clientId    String?
+  payment     Payment?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Client {
+  id        String   @id @default(cuid())
+  name      String
+  email     String
+  phone     String?
+  user      User     @relation(fields: [userId], references: [id])
+  userId    String
+  rdvs      Rdv[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+enum Sender {
+  CLIENT
+  PRO
+}
+
+model Message {
+  id        String   @id @default(cuid())
+  content   String
+  from      Sender
+  user      User     @relation(fields: [userId], references: [id])
+  userId    String
+  createdAt DateTime @default(now())
+}
+
+model Payment {
+  id        String   @id @default(cuid())
+  stripeId  String   @unique
+  amount    Int
+  status    String
+  rdv       Rdv?     @relation(fields: [rdvId], references: [id])
+  rdvId     String?  @unique
+  user      User     @relation(fields: [userId], references: [id])
+  userId    String
+  createdAt DateTime @default(now())
 }
