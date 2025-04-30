@@ -30,6 +30,12 @@ model User {
   payments     Payment[]
   reservations Int            @default(0) // compteur mensuel pour l'offre gratuite
   createdAt    DateTime       @default(now())
+  plan SubscriptionPlan @default(FREE)
+}
+
+enum SubscriptionPlan {
+  FREE
+  PREMIUM
 }
 
 enum Role {

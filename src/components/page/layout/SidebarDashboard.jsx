@@ -1,4 +1,5 @@
 'use client'
+import { SubscriptionButton } from './SubscriptionButton'
 import { signOut } from 'next-auth/react'
 import {
   Dropdown,
@@ -110,6 +111,9 @@ export function SidebarDashboard({ children }) {
                 <QuestionMarkCircleIcon />
                 <SidebarLabel>Support</SidebarLabel>
               </SidebarItem>
+            </SidebarSection>
+            <SidebarSection>
+              <SubscriptionButton />
             </SidebarSection>
           </SidebarBody>
           <SidebarFooter>
