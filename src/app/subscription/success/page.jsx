@@ -1,5 +1,5 @@
 import { redirect } from 'next/navigation'
-
+import { SuccessDialog } from '@/components/ui/SuccesDialog'
 import { stripe } from '@/lib/stripe'
 
 export default async function Success({ searchParams }) {
@@ -21,12 +21,11 @@ export default async function Success({ searchParams }) {
 
   if (status === 'complete') {
     return (
-      <section id="success">
-        <p>
-          We appreciate your business! A confirmation email will be sent to{' '}
-          {customerEmail}. If you have any questions, please email{' '}
-        </p>
-        <a href="mailto:orders@example.com">orders@example.com</a>.
+      <section
+        id="success"
+        className="flex min-h-screen items-center justify-center bg-gray-50 px-4"
+      >
+        <SuccessDialog email={customerEmail} />
       </section>
     )
   }
