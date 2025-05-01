@@ -43,6 +43,7 @@ import {
   QuestionMarkCircleIcon,
   CalendarDaysIcon,
   UsersIcon,
+  ClipboardDocumentCheckIcon,
 } from '@heroicons/react/20/solid'
 
 export function SidebarDashboard({ children }) {
@@ -89,7 +90,7 @@ export function SidebarDashboard({ children }) {
                 <SidebarLabel>Accueil</SidebarLabel>
               </SidebarItem>
               <SidebarItem href="/dashboard/rendez-vous">
-                <CalendarDaysIcon />
+                <ClipboardDocumentCheckIcon />
                 <SidebarLabel>Rendez-vous</SidebarLabel>
               </SidebarItem>
               <SidebarItem href="/dashboard/dispo">

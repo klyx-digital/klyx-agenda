@@ -1,11 +1,11 @@
-import TableauxRdv from '@/components/page/dashboard/RDV/Rdv'
-import Calendar from '@/components/page/dashboard/RDV/Calendar'
+import Calendar from '@/app/dashboard/rendez-vous/Calendar'
+import { getRdvByUser } from './action'
 
-export default function Page() {
+export default async function Page() {
+  const rdvs = await getRdvByUser()
   return (
     <div>
-      <Calendar />
-      <TableauxRdv />
+      <Calendar rdvs={rdvs} />
     </div>
   )
 }

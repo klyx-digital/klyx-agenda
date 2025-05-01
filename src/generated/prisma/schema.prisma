@@ -15,21 +15,27 @@ datasource db {
 }
 
 model User {
-  id           String         @id @default(cuid())
-  email        String         @unique
+  id           String           @id @default(cuid())
+  email        String           @unique
   password     String
   firstName    String?
   lastName     String?
-  slug         String?        @unique
-  role         Role           @default(PRO)
+  slug         String?          @unique
+  role         Role             @default(PRO)
   services     Service[]
   dispos       Availability[]
   rdvs         Rdv[]
   clients      Client[]
   messages     Message[]
   payments     Payment[]
-  reservations Int            @default(0) // compteur mensuel pour l'offre gratuite
-  createdAt    DateTime       @default(now())
+  reservations Int              @default(0) // compteur mensuel pour l'offre gratuite
+  createdAt    DateTime         @default(now())
+  plan         SubscriptionPlan @default(FREE)
+}
+
+enum SubscriptionPlan {
+  FREE
+  PREMIUM
 }
 
 enum Role {

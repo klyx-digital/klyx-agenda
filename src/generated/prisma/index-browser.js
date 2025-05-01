@@ -126,7 +126,8 @@ exports.Prisma.UserScalarFieldEnum = {
   slug: 'slug',
   role: 'role',
   reservations: 'reservations',
-  createdAt: 'createdAt'
+  createdAt: 'createdAt',
+  plan: 'plan'
 };
 
 exports.Prisma.ServiceScalarFieldEnum = {
@@ -208,6 +209,11 @@ exports.Prisma.NullsOrder = {
 exports.Role = exports.$Enums.Role = {
   PRO: 'PRO',
   ADMIN: 'ADMIN'
+};
+
+exports.SubscriptionPlan = exports.$Enums.SubscriptionPlan = {
+  FREE: 'FREE',
+  PREMIUM: 'PREMIUM'
 };
 
 exports.Sender = exports.$Enums.Sender = {

@@ -53,7 +53,15 @@ export type Payment = $Result.DefaultSelection<Prisma.$PaymentPayload>
  * Enums
  */
 export namespace $Enums {
-  export const Role: {
+  export const SubscriptionPlan: {
+  FREE: 'FREE',
+  PREMIUM: 'PREMIUM'
+};
+
+export type SubscriptionPlan = (typeof SubscriptionPlan)[keyof typeof SubscriptionPlan]
+
+
+export const Role: {
   PRO: 'PRO',
   ADMIN: 'ADMIN'
 };
@@ -69,6 +77,10 @@ export const Sender: {
 export type Sender = (typeof Sender)[keyof typeof Sender]
 
 }
+
+export type SubscriptionPlan = $Enums.SubscriptionPlan
+
+export const SubscriptionPlan: typeof $Enums.SubscriptionPlan
 
 export type Role = $Enums.Role
 
@@ -1611,6 +1623,7 @@ export namespace Prisma {
     role: $Enums.Role | null
     reservations: number | null
     createdAt: Date | null
+    plan: $Enums.SubscriptionPlan | null
   }
 
   export type UserMaxAggregateOutputType = {
@@ -1623,6 +1636,7 @@ export namespace Prisma {
     role: $Enums.Role | null
     reservations: number | null
     createdAt: Date | null
+    plan: $Enums.SubscriptionPlan | null
   }
 
   export type UserCountAggregateOutputType = {
@@ -1635,6 +1649,7 @@ export namespace Prisma {
     role: number
     reservations: number
     createdAt: number
+    plan: number
     _all: number
   }
 
@@ -1657,6 +1672,7 @@ export namespace Prisma {
     role?: true
     reservations?: true
     createdAt?: true
+    plan?: true
   }
 
   export type UserMaxAggregateInputType = {
@@ -1669,6 +1685,7 @@ export namespace Prisma {
     role?: true
     reservations?: true
     createdAt?: true
+    plan?: true
   }
 
   export type UserCountAggregateInputType = {
@@ -1681,6 +1698,7 @@ export namespace Prisma {
     role?: true
     reservations?: true
     createdAt?: true
+    plan?: true
     _all?: true
   }
 
@@ -1780,6 +1798,7 @@ export namespace Prisma {
     role: $Enums.Role
     reservations: number
     createdAt: Date
+    plan: $Enums.SubscriptionPlan
     _count: UserCountAggregateOutputType | null
     _avg: UserAvgAggregateOutputType | null
     _sum: UserSumAggregateOutputType | null
@@ -1811,6 +1830,7 @@ export namespace Prisma {
     role?: boolean
     reservations?: boolean
     createdAt?: boolean
+    plan?: boolean
     services?: boolean | User$servicesArgs<ExtArgs>
     dispos?: boolean | User$disposArgs<ExtArgs>
     rdvs?: boolean | User$rdvsArgs<ExtArgs>
@@ -1830,6 +1850,7 @@ export namespace Prisma {
     role?: boolean
     reservations?: boolean
     createdAt?: boolean
+    plan?: boolean
   }, ExtArgs["result"]["user"]>
 
   export type UserSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -1842,6 +1863,7 @@ export namespace Prisma {
     role?: boolean
     reservations?: boolean
     createdAt?: boolean
+    plan?: boolean
   }, ExtArgs["result"]["user"]>
 
   export type UserSelectScalar = {
@@ -1854,9 +1876,10 @@ export namespace Prisma {
     role?: boolean
     reservations?: boolean
     createdAt?: boolean
+    plan?: boolean
   }
 
-  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "email" | "password" | "firstName" | "lastName" | "slug" | "role" | "reservations" | "createdAt", ExtArgs["result"]["user"]>
+  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "email" | "password" | "firstName" | "lastName" | "slug" | "role" | "reservations" | "createdAt" | "plan", ExtArgs["result"]["user"]>
   export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     services?: boolean | User$servicesArgs<ExtArgs>
     dispos?: boolean | User$disposArgs<ExtArgs>
@@ -1889,6 +1912,7 @@ export namespace Prisma {
       role: $Enums.Role
       reservations: number
       createdAt: Date
+      plan: $Enums.SubscriptionPlan
     }, ExtArgs["result"]["user"]>
     composites: {}
   }
@@ -2327,6 +2351,7 @@ export namespace Prisma {
     readonly role: FieldRef<"User", 'Role'>
     readonly reservations: FieldRef<"User", 'Int'>
     readonly createdAt: FieldRef<"User", 'DateTime'>
+    readonly plan: FieldRef<"User", 'SubscriptionPlan'>
   }
     
 
@@ -9681,7 +9706,8 @@ export namespace Prisma {
     slug: 'slug',
     role: 'role',
     reservations: 'reservations',
-    createdAt: 'createdAt'
+    createdAt: 'createdAt',
+    plan: 'plan'
   };
 
   export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
@@ -9853,6 +9879,20 @@ export namespace Prisma {
 
 
   /**
+   * Reference to a field of type 'SubscriptionPlan'
+   */
+  export type EnumSubscriptionPlanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'SubscriptionPlan'>
+    
+
+
+  /**
+   * Reference to a field of type 'SubscriptionPlan[]'
+   */
+  export type ListEnumSubscriptionPlanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'SubscriptionPlan[]'>
+    
+
+
+  /**
    * Reference to a field of type 'Float'
    */
   export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float'>
@@ -9903,6 +9943,7 @@ export namespace Prisma {
     role?: EnumRoleFilter<"User"> | $Enums.Role
     reservations?: IntFilter<"User"> | number
     createdAt?: DateTimeFilter<"User"> | Date | string
+    plan?: EnumSubscriptionPlanFilter<"User"> | $Enums.SubscriptionPlan
     services?: ServiceListRelationFilter
     dispos?: AvailabilityListRelationFilter
     rdvs?: RdvListRelationFilter
@@ -9921,6 +9962,7 @@ export namespace Prisma {
     role?: SortOrder
     reservations?: SortOrder
     createdAt?: SortOrder
+    plan?: SortOrder
     services?: ServiceOrderByRelationAggregateInput
     dispos?: AvailabilityOrderByRelationAggregateInput
     rdvs?: RdvOrderByRelationAggregateInput
@@ -9942,6 +9984,7 @@ export namespace Prisma {
     role?: EnumRoleFilter<"User"> | $Enums.Role
     reservations?: IntFilter<"User"> | number
     createdAt?: DateTimeFilter<"User"> | Date | string
+    plan?: EnumSubscriptionPlanFilter<"User"> | $Enums.SubscriptionPlan
     services?: ServiceListRelationFilter
     dispos?: AvailabilityListRelationFilter
     rdvs?: RdvListRelationFilter
@@ -9960,6 +10003,7 @@ export namespace Prisma {
     role?: SortOrder
     reservations?: SortOrder
     createdAt?: SortOrder
+    plan?: SortOrder
     _count?: UserCountOrderByAggregateInput
     _avg?: UserAvgOrderByAggregateInput
     _max?: UserMaxOrderByAggregateInput
@@ -9980,6 +10024,7 @@ export namespace Prisma {
     role?: EnumRoleWithAggregatesFilter<"User"> | $Enums.Role
     reservations?: IntWithAggregatesFilter<"User"> | number
     createdAt?: DateTimeWithAggregatesFilter<"User"> | Date | string
+    plan?: EnumSubscriptionPlanWithAggregatesFilter<"User"> | $Enums.SubscriptionPlan
   }
 
   export type ServiceWhereInput = {
@@ -10416,6 +10461,7 @@ export namespace Prisma {
     role?: $Enums.Role
     reservations?: number
     createdAt?: Date | string
+    plan?: $Enums.SubscriptionPlan
     services?: ServiceCreateNestedManyWithoutUserInput
     dispos?: AvailabilityCreateNestedManyWithoutUserInput
     rdvs?: RdvCreateNestedManyWithoutUserInput
@@ -10434,6 +10480,7 @@ export namespace Prisma {
     role?: $Enums.Role
     reservations?: number
     createdAt?: Date | string
+    plan?: $Enums.SubscriptionPlan
     services?: ServiceUncheckedCreateNestedManyWithoutUserInput
     dispos?: AvailabilityUncheckedCreateNestedManyWithoutUserInput
     rdvs?: RdvUncheckedCreateNestedManyWithoutUserInput
@@ -10452,6 +10499,7 @@ export namespace Prisma {
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     reservations?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    plan?: EnumSubscriptionPlanFieldUpdateOperationsInput | $Enums.SubscriptionPlan
     services?: ServiceUpdateManyWithoutUserNestedInput
     dispos?: AvailabilityUpdateManyWithoutUserNestedInput
     rdvs?: RdvUpdateManyWithoutUserNestedInput
@@ -10470,6 +10518,7 @@ export namespace Prisma {
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     reservations?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    plan?: EnumSubscriptionPlanFieldUpdateOperationsInput | $Enums.SubscriptionPlan
     services?: ServiceUncheckedUpdateManyWithoutUserNestedInput
     dispos?: AvailabilityUncheckedUpdateManyWithoutUserNestedInput
     rdvs?: RdvUncheckedUpdateManyWithoutUserNestedInput
@@ -10488,6 +10537,7 @@ export namespace Prisma {
     role?: $Enums.Role
     reservations?: number
     createdAt?: Date | string
+    plan?: $Enums.SubscriptionPlan
   }
 
   export type UserUpdateManyMutationInput = {
@@ -10500,6 +10550,7 @@ export namespace Prisma {
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     reservations?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    plan?: EnumSubscriptionPlanFieldUpdateOperationsInput | $Enums.SubscriptionPlan
   }
 
   export type UserUncheckedUpdateManyInput = {
@@ -10512,6 +10563,7 @@ export namespace Prisma {
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     reservations?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    plan?: EnumSubscriptionPlanFieldUpdateOperationsInput | $Enums.SubscriptionPlan
   }
 
   export type ServiceCreateInput = {
@@ -11010,6 +11062,13 @@ export namespace Prisma {
     not?: NestedDateTimeFilter<$PrismaModel> | Date | string
   }
 
+  export type EnumSubscriptionPlanFilter<$PrismaModel = never> = {
+    equals?: $Enums.SubscriptionPlan | EnumSubscriptionPlanFieldRefInput<$PrismaModel>
+    in?: $Enums.SubscriptionPlan[] | ListEnumSubscriptionPlanFieldRefInput<$PrismaModel>
+    notIn?: $Enums.SubscriptionPlan[] | ListEnumSubscriptionPlanFieldRefInput<$PrismaModel>
+    not?: NestedEnumSubscriptionPlanFilter<$PrismaModel> | $Enums.SubscriptionPlan
+  }
+
   export type ServiceListRelationFilter = {
     every?: ServiceWhereInput
     some?: ServiceWhereInput
@@ -11085,6 +11144,7 @@ export namespace Prisma {
     role?: SortOrder
     reservations?: SortOrder
     createdAt?: SortOrder
+    plan?: SortOrder
   }
 
   export type UserAvgOrderByAggregateInput = {
@@ -11101,6 +11161,7 @@ export namespace Prisma {
     role?: SortOrder
     reservations?: SortOrder
     createdAt?: SortOrder
+    plan?: SortOrder
   }
 
   export type UserMinOrderByAggregateInput = {
@@ -11113,6 +11174,7 @@ export namespace Prisma {
     role?: SortOrder
     reservations?: SortOrder
     createdAt?: SortOrder
+    plan?: SortOrder
   }
 
   export type UserSumOrderByAggregateInput = {
@@ -11193,6 +11255,16 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedDateTimeFilter<$PrismaModel>
     _max?: NestedDateTimeFilter<$PrismaModel>
+  }
+
+  export type EnumSubscriptionPlanWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.SubscriptionPlan | EnumSubscriptionPlanFieldRefInput<$PrismaModel>
+    in?: $Enums.SubscriptionPlan[] | ListEnumSubscriptionPlanFieldRefInput<$PrismaModel>
+    notIn?: $Enums.SubscriptionPlan[] | ListEnumSubscriptionPlanFieldRefInput<$PrismaModel>
+    not?: NestedEnumSubscriptionPlanWithAggregatesFilter<$PrismaModel> | $Enums.SubscriptionPlan
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumSubscriptionPlanFilter<$PrismaModel>
+    _max?: NestedEnumSubscriptionPlanFilter<$PrismaModel>
   }
 
   export type IntNullableFilter<$PrismaModel = never> = {
@@ -11622,6 +11694,10 @@ export namespace Prisma {
 
   export type DateTimeFieldUpdateOperationsInput = {
     set?: Date | string
+  }
+
+  export type EnumSubscriptionPlanFieldUpdateOperationsInput = {
+    set?: $Enums.SubscriptionPlan
   }
 
   export type ServiceUpdateManyWithoutUserNestedInput = {
@@ -12119,6 +12195,13 @@ export namespace Prisma {
     not?: NestedDateTimeFilter<$PrismaModel> | Date | string
   }
 
+  export type NestedEnumSubscriptionPlanFilter<$PrismaModel = never> = {
+    equals?: $Enums.SubscriptionPlan | EnumSubscriptionPlanFieldRefInput<$PrismaModel>
+    in?: $Enums.SubscriptionPlan[] | ListEnumSubscriptionPlanFieldRefInput<$PrismaModel>
+    notIn?: $Enums.SubscriptionPlan[] | ListEnumSubscriptionPlanFieldRefInput<$PrismaModel>
+    not?: NestedEnumSubscriptionPlanFilter<$PrismaModel> | $Enums.SubscriptionPlan
+  }
+
   export type NestedStringWithAggregatesFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
     in?: string[] | ListStringFieldRefInput<$PrismaModel>
@@ -12213,6 +12296,16 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedDateTimeFilter<$PrismaModel>
     _max?: NestedDateTimeFilter<$PrismaModel>
+  }
+
+  export type NestedEnumSubscriptionPlanWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.SubscriptionPlan | EnumSubscriptionPlanFieldRefInput<$PrismaModel>
+    in?: $Enums.SubscriptionPlan[] | ListEnumSubscriptionPlanFieldRefInput<$PrismaModel>
+    notIn?: $Enums.SubscriptionPlan[] | ListEnumSubscriptionPlanFieldRefInput<$PrismaModel>
+    not?: NestedEnumSubscriptionPlanWithAggregatesFilter<$PrismaModel> | $Enums.SubscriptionPlan
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumSubscriptionPlanFilter<$PrismaModel>
+    _max?: NestedEnumSubscriptionPlanFilter<$PrismaModel>
   }
 
   export type NestedIntNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -12652,6 +12745,7 @@ export namespace Prisma {
     role?: $Enums.Role
     reservations?: number
     createdAt?: Date | string
+    plan?: $Enums.SubscriptionPlan
     dispos?: AvailabilityCreateNestedManyWithoutUserInput
     rdvs?: RdvCreateNestedManyWithoutUserInput
     clients?: ClientCreateNestedManyWithoutUserInput
@@ -12669,6 +12763,7 @@ export namespace Prisma {
     role?: $Enums.Role
     reservations?: number
     createdAt?: Date | string
+    plan?: $Enums.SubscriptionPlan
     dispos?: AvailabilityUncheckedCreateNestedManyWithoutUserInput
     rdvs?: RdvUncheckedCreateNestedManyWithoutUserInput
     clients?: ClientUncheckedCreateNestedManyWithoutUserInput
@@ -12740,6 +12835,7 @@ export namespace Prisma {
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     reservations?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    plan?: EnumSubscriptionPlanFieldUpdateOperationsInput | $Enums.SubscriptionPlan
     dispos?: AvailabilityUpdateManyWithoutUserNestedInput
     rdvs?: RdvUpdateManyWithoutUserNestedInput
     clients?: ClientUpdateManyWithoutUserNestedInput
@@ -12757,6 +12853,7 @@ export namespace Prisma {
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     reservations?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    plan?: EnumSubscriptionPlanFieldUpdateOperationsInput | $Enums.SubscriptionPlan
     dispos?: AvailabilityUncheckedUpdateManyWithoutUserNestedInput
     rdvs?: RdvUncheckedUpdateManyWithoutUserNestedInput
     clients?: ClientUncheckedUpdateManyWithoutUserNestedInput
@@ -12790,6 +12887,7 @@ export namespace Prisma {
     role?: $Enums.Role
     reservations?: number
     createdAt?: Date | string
+    plan?: $Enums.SubscriptionPlan
     services?: ServiceCreateNestedManyWithoutUserInput
     rdvs?: RdvCreateNestedManyWithoutUserInput
     clients?: ClientCreateNestedManyWithoutUserInput
@@ -12807,6 +12905,7 @@ export namespace Prisma {
     role?: $Enums.Role
     reservations?: number
     createdAt?: Date | string
+    plan?: $Enums.SubscriptionPlan
     services?: ServiceUncheckedCreateNestedManyWithoutUserInput
     rdvs?: RdvUncheckedCreateNestedManyWithoutUserInput
     clients?: ClientUncheckedCreateNestedManyWithoutUserInput
@@ -12840,6 +12939,7 @@ export namespace Prisma {
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     reservations?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    plan?: EnumSubscriptionPlanFieldUpdateOperationsInput | $Enums.SubscriptionPlan
     services?: ServiceUpdateManyWithoutUserNestedInput
     rdvs?: RdvUpdateManyWithoutUserNestedInput
     clients?: ClientUpdateManyWithoutUserNestedInput
@@ -12857,6 +12957,7 @@ export namespace Prisma {
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     reservations?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    plan?: EnumSubscriptionPlanFieldUpdateOperationsInput | $Enums.SubscriptionPlan
     services?: ServiceUncheckedUpdateManyWithoutUserNestedInput
     rdvs?: RdvUncheckedUpdateManyWithoutUserNestedInput
     clients?: ClientUncheckedUpdateManyWithoutUserNestedInput
@@ -12899,6 +13000,7 @@ export namespace Prisma {
     role?: $Enums.Role
     reservations?: number
     createdAt?: Date | string
+    plan?: $Enums.SubscriptionPlan
     services?: ServiceCreateNestedManyWithoutUserInput
     dispos?: AvailabilityCreateNestedManyWithoutUserInput
     clients?: ClientCreateNestedManyWithoutUserInput
@@ -12916,6 +13018,7 @@ export namespace Prisma {
     role?: $Enums.Role
     reservations?: number
     createdAt?: Date | string
+    plan?: $Enums.SubscriptionPlan
     services?: ServiceUncheckedCreateNestedManyWithoutUserInput
     dispos?: AvailabilityUncheckedCreateNestedManyWithoutUserInput
     clients?: ClientUncheckedCreateNestedManyWithoutUserInput
@@ -13028,6 +13131,7 @@ export namespace Prisma {
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     reservations?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    plan?: EnumSubscriptionPlanFieldUpdateOperationsInput | $Enums.SubscriptionPlan
     services?: ServiceUpdateManyWithoutUserNestedInput
     dispos?: AvailabilityUpdateManyWithoutUserNestedInput
     clients?: ClientUpdateManyWithoutUserNestedInput
@@ -13045,6 +13149,7 @@ export namespace Prisma {
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     reservations?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    plan?: EnumSubscriptionPlanFieldUpdateOperationsInput | $Enums.SubscriptionPlan
     services?: ServiceUncheckedUpdateManyWithoutUserNestedInput
     dispos?: AvailabilityUncheckedUpdateManyWithoutUserNestedInput
     clients?: ClientUncheckedUpdateManyWithoutUserNestedInput
@@ -13122,6 +13227,7 @@ export namespace Prisma {
     role?: $Enums.Role
     reservations?: number
     createdAt?: Date | string
+    plan?: $Enums.SubscriptionPlan
     services?: ServiceCreateNestedManyWithoutUserInput
     dispos?: AvailabilityCreateNestedManyWithoutUserInput
     rdvs?: RdvCreateNestedManyWithoutUserInput
@@ -13139,6 +13245,7 @@ export namespace Prisma {
     role?: $Enums.Role
     reservations?: number
     createdAt?: Date | string
+    plan?: $Enums.SubscriptionPlan
     services?: ServiceUncheckedCreateNestedManyWithoutUserInput
     dispos?: AvailabilityUncheckedCreateNestedManyWithoutUserInput
     rdvs?: RdvUncheckedCreateNestedManyWithoutUserInput
@@ -13210,6 +13317,7 @@ export namespace Prisma {
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     reservations?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    plan?: EnumSubscriptionPlanFieldUpdateOperationsInput | $Enums.SubscriptionPlan
     services?: ServiceUpdateManyWithoutUserNestedInput
     dispos?: AvailabilityUpdateManyWithoutUserNestedInput
     rdvs?: RdvUpdateManyWithoutUserNestedInput
@@ -13227,6 +13335,7 @@ export namespace Prisma {
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     reservations?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    plan?: EnumSubscriptionPlanFieldUpdateOperationsInput | $Enums.SubscriptionPlan
     services?: ServiceUncheckedUpdateManyWithoutUserNestedInput
     dispos?: AvailabilityUncheckedUpdateManyWithoutUserNestedInput
     rdvs?: RdvUncheckedUpdateManyWithoutUserNestedInput
@@ -13260,6 +13369,7 @@ export namespace Prisma {
     role?: $Enums.Role
     reservations?: number
     createdAt?: Date | string
+    plan?: $Enums.SubscriptionPlan
     services?: ServiceCreateNestedManyWithoutUserInput
     dispos?: AvailabilityCreateNestedManyWithoutUserInput
     rdvs?: RdvCreateNestedManyWithoutUserInput
@@ -13277,6 +13387,7 @@ export namespace Prisma {
     role?: $Enums.Role
     reservations?: number
     createdAt?: Date | string
+    plan?: $Enums.SubscriptionPlan
     services?: ServiceUncheckedCreateNestedManyWithoutUserInput
     dispos?: AvailabilityUncheckedCreateNestedManyWithoutUserInput
     rdvs?: RdvUncheckedCreateNestedManyWithoutUserInput
@@ -13310,6 +13421,7 @@ export namespace Prisma {
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     reservations?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    plan?: EnumSubscriptionPlanFieldUpdateOperationsInput | $Enums.SubscriptionPlan
     services?: ServiceUpdateManyWithoutUserNestedInput
     dispos?: AvailabilityUpdateManyWithoutUserNestedInput
     rdvs?: RdvUpdateManyWithoutUserNestedInput
@@ -13327,6 +13439,7 @@ export namespace Prisma {
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     reservations?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    plan?: EnumSubscriptionPlanFieldUpdateOperationsInput | $Enums.SubscriptionPlan
     services?: ServiceUncheckedUpdateManyWithoutUserNestedInput
     dispos?: AvailabilityUncheckedUpdateManyWithoutUserNestedInput
     rdvs?: RdvUncheckedUpdateManyWithoutUserNestedInput
@@ -13377,6 +13490,7 @@ export namespace Prisma {
     role?: $Enums.Role
     reservations?: number
     createdAt?: Date | string
+    plan?: $Enums.SubscriptionPlan
     services?: ServiceCreateNestedManyWithoutUserInput
     dispos?: AvailabilityCreateNestedManyWithoutUserInput
     rdvs?: RdvCreateNestedManyWithoutUserInput
@@ -13394,6 +13508,7 @@ export namespace Prisma {
     role?: $Enums.Role
     reservations?: number
     createdAt?: Date | string
+    plan?: $Enums.SubscriptionPlan
     services?: ServiceUncheckedCreateNestedManyWithoutUserInput
     dispos?: AvailabilityUncheckedCreateNestedManyWithoutUserInput
     rdvs?: RdvUncheckedCreateNestedManyWithoutUserInput
@@ -13466,6 +13581,7 @@ export namespace Prisma {
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     reservations?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    plan?: EnumSubscriptionPlanFieldUpdateOperationsInput | $Enums.SubscriptionPlan
     services?: ServiceUpdateManyWithoutUserNestedInput
     dispos?: AvailabilityUpdateManyWithoutUserNestedInput
     rdvs?: RdvUpdateManyWithoutUserNestedInput
@@ -13483,6 +13599,7 @@ export namespace Prisma {
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     reservations?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    plan?: EnumSubscriptionPlanFieldUpdateOperationsInput | $Enums.SubscriptionPlan
     services?: ServiceUncheckedUpdateManyWithoutUserNestedInput
     dispos?: AvailabilityUncheckedUpdateManyWithoutUserNestedInput
     rdvs?: RdvUncheckedUpdateManyWithoutUserNestedInput

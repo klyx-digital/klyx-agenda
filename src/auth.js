@@ -37,6 +37,8 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         return {
           id: user.id,
           email: user.email,
+          firstName: user.firstName,
+          lastName: user.lastName,
         }
       },
     }),
@@ -46,5 +48,11 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
   },
   session: {
     strategy: 'jwt',
+  },
+  callbacks: {
+    async session({ session, token }) {
+      session.user.id = token.sub
+      return session
+    },
   },
 })
