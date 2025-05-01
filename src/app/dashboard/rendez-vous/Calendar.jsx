@@ -7,6 +7,7 @@ import {
   EllipsisHorizontalIcon,
   BriefcaseIcon,
 } from '@heroicons/react/20/solid'
+import { Edit } from './Edit'
 import { getRdvByUser } from './action'
 import { useState } from 'react'
 import { fr } from 'date-fns/locale'
@@ -36,6 +37,9 @@ export default function Calendar({ rdvs }) {
   const currentMonthLabel = format(currentMonth, 'MMMM yyyy', { locale: fr })
 
   const rdvDates = rdvs.map((rdv) => format(new Date(rdv.date), 'yyyy-MM-dd'))
+  const rdvsOfSelectedDate = rdvs.filter(
+    (rdv) => format(new Date(rdv.date), 'yyyy-MM-dd') === selectedDate,
+  )
 
   const days = eachDayOfInterval({ start, end }).map((date) => ({
     date: format(date, 'yyyy-MM-dd'),
@@ -124,12 +128,37 @@ export default function Calendar({ rdvs }) {
               </button>
             ))}
           </div>
-          <button
-            type="button"
-            className="mt-8 w-full rounded-md bg-blue-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
-          >
-            Ajouter un événement
-          </button>
+          {selectedDate && (
+            <div className="mt-6 text-left">
+              <h3 className="text-sm font-semibold text-gray-900">
+                Rendez-vous du{' '}
+                {format(new Date(selectedDate), 'dd MMMM yyyy', { locale: fr })}
+              </h3>
+              {rdvsOfSelectedDate.length > 0 ? (
+                <ul className="mt-2 space-y-2 text-sm text-gray-700">
+                  {rdvsOfSelectedDate.map((rdv) => (
+                    <li
+                      key={rdv.id}
+                      className="rounded border px-3 py-2 shadow-sm"
+                    >
+                      <p>
+                        <strong>{rdv.client.name}</strong> à{' '}
+                        {format(new Date(rdv.date), 'HH:mm')}
+                      </p>
+                      <p>
+                        {rdv.service.name} – {rdv.service.duration} min
+                      </p>
+                    </li>
+                  ))}
+                </ul>
+              ) : (
+                <p className="mt-2 text-sm text-gray-500">
+                  Aucun rendez-vous ce jour-là.
+                </p>
+              )}
+            </div>
+          )}
+          <Edit />
         </div>
         <ol className="mt-4 divide-y divide-gray-100 text-sm/6 lg:col-span-7 xl:col-span-8">
           {rdvs.map((rdv) => (

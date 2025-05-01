@@ -8,7 +8,7 @@ import {
   DialogDescription,
   DialogTitle,
 } from '@/components/ui/dialog'
-import { Field, Label } from '@/components/ui/fieldset'
+import { Field, Label, FieldGroup } from '@/components/ui/fieldset'
 import { Input } from '@/components/ui/input'
 import { useState } from 'react'
 
@@ -16,29 +16,59 @@ export function Edit() {
   let [isOpen, setIsOpen] = useState(false)
 
   return (
-    <>
+    <div className="py-2">
       <Button type="button" onClick={() => setIsOpen(true)}>
-        Refund payment
+        Ajouter un événement
       </Button>
       <Dialog open={isOpen} onClose={setIsOpen}>
-        <DialogTitle>Refund payment</DialogTitle>
+        <DialogTitle>Planification du rendez-vous</DialogTitle>
         <DialogDescription>
-          The refund will be reflected in the customer’s bank account 2 to 3
-          business days after processing.
+          Renseignez les informations ci-dessous pour créer un nouveau
+          rendez-vous dans votre agenda.
         </DialogDescription>
         <DialogBody>
-          <Field>
-            <Label>Amount</Label>
-            <Input name="amount" placeholder="$0.00" />
-          </Field>
+          <FieldGroup>
+            <Field>
+              <Label>Date du rendez-vous</Label>
+              <Input name="amount" placeholder="$0.00" />
+            </Field>
+            <Field>
+              <Label>Heure de début</Label>
+              <Input name="amount" placeholder="$0.00" />
+            </Field>
+            <Field>
+              <Label>Service</Label>
+              <Input name="amount" placeholder="$0.00" />
+            </Field>
+            <Field>
+              <Label>Prix</Label>
+              <Input name="amount" placeholder="$0.00" />
+            </Field>
+            <Field>
+              <Label>Nom du client</Label>
+              <Input name="amount" placeholder="$0.00" />
+            </Field>
+            <Field>
+              <Label>Email</Label>
+              <Input name="amount" placeholder="$0.00" />
+            </Field>
+            <Field>
+              <Label>Téléphone</Label>
+              <Input name="amount" placeholder="$0.00" />
+            </Field>{' '}
+            <Field>
+              <Label>Statut du paiement</Label>
+              <Input name="amount" placeholder="$0.00" />
+            </Field>
+          </FieldGroup>
         </DialogBody>
         <DialogActions>
           <Button plain onClick={() => setIsOpen(false)}>
             Cancel
           </Button>
-          <Button onClick={() => setIsOpen(false)}>Refund</Button>
+          <Button onClick={() => setIsOpen(false)}>Créer le rendez-vous</Button>
         </DialogActions>
       </Dialog>
-    </>
+    </div>
   )
 }
