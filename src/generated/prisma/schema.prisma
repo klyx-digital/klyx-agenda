@@ -94,6 +94,8 @@ model Client {
   rdvs      Rdv[]
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+
+  @@unique([email, userId])
 }
 
 enum Sender {
@@ -112,7 +114,7 @@ model Message {
 
 model Payment {
   id        String   @id @default(cuid())
-  stripeId  String   @unique
+  stripeId  String?  @unique
   amount    Int
   status    String
   rdv       Rdv?     @relation(fields: [rdvId], references: [id])
