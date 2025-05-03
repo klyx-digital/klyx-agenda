@@ -1624,6 +1624,10 @@ export namespace Prisma {
     reservations: number | null
     createdAt: Date | null
     plan: $Enums.SubscriptionPlan | null
+    bio: string | null
+    image: string | null
+    location: string | null
+    website: string | null
   }
 
   export type UserMaxAggregateOutputType = {
@@ -1637,6 +1641,10 @@ export namespace Prisma {
     reservations: number | null
     createdAt: Date | null
     plan: $Enums.SubscriptionPlan | null
+    bio: string | null
+    image: string | null
+    location: string | null
+    website: string | null
   }
 
   export type UserCountAggregateOutputType = {
@@ -1650,6 +1658,11 @@ export namespace Prisma {
     reservations: number
     createdAt: number
     plan: number
+    bio: number
+    image: number
+    location: number
+    website: number
+    socialLinks: number
     _all: number
   }
 
@@ -1673,6 +1686,10 @@ export namespace Prisma {
     reservations?: true
     createdAt?: true
     plan?: true
+    bio?: true
+    image?: true
+    location?: true
+    website?: true
   }
 
   export type UserMaxAggregateInputType = {
@@ -1686,6 +1703,10 @@ export namespace Prisma {
     reservations?: true
     createdAt?: true
     plan?: true
+    bio?: true
+    image?: true
+    location?: true
+    website?: true
   }
 
   export type UserCountAggregateInputType = {
@@ -1699,6 +1720,11 @@ export namespace Prisma {
     reservations?: true
     createdAt?: true
     plan?: true
+    bio?: true
+    image?: true
+    location?: true
+    website?: true
+    socialLinks?: true
     _all?: true
   }
 
@@ -1799,6 +1825,11 @@ export namespace Prisma {
     reservations: number
     createdAt: Date
     plan: $Enums.SubscriptionPlan
+    bio: string | null
+    image: string | null
+    location: string | null
+    website: string | null
+    socialLinks: JsonValue | null
     _count: UserCountAggregateOutputType | null
     _avg: UserAvgAggregateOutputType | null
     _sum: UserSumAggregateOutputType | null
@@ -1831,6 +1862,11 @@ export namespace Prisma {
     reservations?: boolean
     createdAt?: boolean
     plan?: boolean
+    bio?: boolean
+    image?: boolean
+    location?: boolean
+    website?: boolean
+    socialLinks?: boolean
     services?: boolean | User$servicesArgs<ExtArgs>
     dispos?: boolean | User$disposArgs<ExtArgs>
     rdvs?: boolean | User$rdvsArgs<ExtArgs>
@@ -1851,6 +1887,11 @@ export namespace Prisma {
     reservations?: boolean
     createdAt?: boolean
     plan?: boolean
+    bio?: boolean
+    image?: boolean
+    location?: boolean
+    website?: boolean
+    socialLinks?: boolean
   }, ExtArgs["result"]["user"]>
 
   export type UserSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -1864,6 +1905,11 @@ export namespace Prisma {
     reservations?: boolean
     createdAt?: boolean
     plan?: boolean
+    bio?: boolean
+    image?: boolean
+    location?: boolean
+    website?: boolean
+    socialLinks?: boolean
   }, ExtArgs["result"]["user"]>
 
   export type UserSelectScalar = {
@@ -1877,9 +1923,14 @@ export namespace Prisma {
     reservations?: boolean
     createdAt?: boolean
     plan?: boolean
+    bio?: boolean
+    image?: boolean
+    location?: boolean
+    website?: boolean
+    socialLinks?: boolean
   }
 
-  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "email" | "password" | "firstName" | "lastName" | "slug" | "role" | "reservations" | "createdAt" | "plan", ExtArgs["result"]["user"]>
+  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "email" | "password" | "firstName" | "lastName" | "slug" | "role" | "reservations" | "createdAt" | "plan" | "bio" | "image" | "location" | "website" | "socialLinks", ExtArgs["result"]["user"]>
   export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     services?: boolean | User$servicesArgs<ExtArgs>
     dispos?: boolean | User$disposArgs<ExtArgs>
@@ -1913,6 +1964,11 @@ export namespace Prisma {
       reservations: number
       createdAt: Date
       plan: $Enums.SubscriptionPlan
+      bio: string | null
+      image: string | null
+      location: string | null
+      website: string | null
+      socialLinks: Prisma.JsonValue | null
     }, ExtArgs["result"]["user"]>
     composites: {}
   }
@@ -2352,6 +2408,11 @@ export namespace Prisma {
     readonly reservations: FieldRef<"User", 'Int'>
     readonly createdAt: FieldRef<"User", 'DateTime'>
     readonly plan: FieldRef<"User", 'SubscriptionPlan'>
+    readonly bio: FieldRef<"User", 'String'>
+    readonly image: FieldRef<"User", 'String'>
+    readonly location: FieldRef<"User", 'String'>
+    readonly website: FieldRef<"User", 'String'>
+    readonly socialLinks: FieldRef<"User", 'Json'>
   }
     
 
@@ -9707,7 +9768,12 @@ export namespace Prisma {
     role: 'role',
     reservations: 'reservations',
     createdAt: 'createdAt',
-    plan: 'plan'
+    plan: 'plan',
+    bio: 'bio',
+    image: 'image',
+    location: 'location',
+    website: 'website',
+    socialLinks: 'socialLinks'
   };
 
   export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
@@ -9801,12 +9867,29 @@ export namespace Prisma {
   export type SortOrder = (typeof SortOrder)[keyof typeof SortOrder]
 
 
+  export const NullableJsonNullValueInput: {
+    DbNull: typeof DbNull,
+    JsonNull: typeof JsonNull
+  };
+
+  export type NullableJsonNullValueInput = (typeof NullableJsonNullValueInput)[keyof typeof NullableJsonNullValueInput]
+
+
   export const QueryMode: {
     default: 'default',
     insensitive: 'insensitive'
   };
 
   export type QueryMode = (typeof QueryMode)[keyof typeof QueryMode]
+
+
+  export const JsonNullValueFilter: {
+    DbNull: typeof DbNull,
+    JsonNull: typeof JsonNull,
+    AnyNull: typeof AnyNull
+  };
+
+  export type JsonNullValueFilter = (typeof JsonNullValueFilter)[keyof typeof JsonNullValueFilter]
 
 
   export const NullsOrder: {
@@ -9893,6 +9976,20 @@ export namespace Prisma {
 
 
   /**
+   * Reference to a field of type 'Json'
+   */
+  export type JsonFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Json'>
+    
+
+
+  /**
+   * Reference to a field of type 'QueryMode'
+   */
+  export type EnumQueryModeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'QueryMode'>
+    
+
+
+  /**
    * Reference to a field of type 'Float'
    */
   export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float'>
@@ -9944,6 +10041,11 @@ export namespace Prisma {
     reservations?: IntFilter<"User"> | number
     createdAt?: DateTimeFilter<"User"> | Date | string
     plan?: EnumSubscriptionPlanFilter<"User"> | $Enums.SubscriptionPlan
+    bio?: StringNullableFilter<"User"> | string | null
+    image?: StringNullableFilter<"User"> | string | null
+    location?: StringNullableFilter<"User"> | string | null
+    website?: StringNullableFilter<"User"> | string | null
+    socialLinks?: JsonNullableFilter<"User">
     services?: ServiceListRelationFilter
     dispos?: AvailabilityListRelationFilter
     rdvs?: RdvListRelationFilter
@@ -9963,6 +10065,11 @@ export namespace Prisma {
     reservations?: SortOrder
     createdAt?: SortOrder
     plan?: SortOrder
+    bio?: SortOrderInput | SortOrder
+    image?: SortOrderInput | SortOrder
+    location?: SortOrderInput | SortOrder
+    website?: SortOrderInput | SortOrder
+    socialLinks?: SortOrderInput | SortOrder
     services?: ServiceOrderByRelationAggregateInput
     dispos?: AvailabilityOrderByRelationAggregateInput
     rdvs?: RdvOrderByRelationAggregateInput
@@ -9985,6 +10092,11 @@ export namespace Prisma {
     reservations?: IntFilter<"User"> | number
     createdAt?: DateTimeFilter<"User"> | Date | string
     plan?: EnumSubscriptionPlanFilter<"User"> | $Enums.SubscriptionPlan
+    bio?: StringNullableFilter<"User"> | string | null
+    image?: StringNullableFilter<"User"> | string | null
+    location?: StringNullableFilter<"User"> | string | null
+    website?: StringNullableFilter<"User"> | string | null
+    socialLinks?: JsonNullableFilter<"User">
     services?: ServiceListRelationFilter
     dispos?: AvailabilityListRelationFilter
     rdvs?: RdvListRelationFilter
@@ -10004,6 +10116,11 @@ export namespace Prisma {
     reservations?: SortOrder
     createdAt?: SortOrder
     plan?: SortOrder
+    bio?: SortOrderInput | SortOrder
+    image?: SortOrderInput | SortOrder
+    location?: SortOrderInput | SortOrder
+    website?: SortOrderInput | SortOrder
+    socialLinks?: SortOrderInput | SortOrder
     _count?: UserCountOrderByAggregateInput
     _avg?: UserAvgOrderByAggregateInput
     _max?: UserMaxOrderByAggregateInput
@@ -10025,6 +10142,11 @@ export namespace Prisma {
     reservations?: IntWithAggregatesFilter<"User"> | number
     createdAt?: DateTimeWithAggregatesFilter<"User"> | Date | string
     plan?: EnumSubscriptionPlanWithAggregatesFilter<"User"> | $Enums.SubscriptionPlan
+    bio?: StringNullableWithAggregatesFilter<"User"> | string | null
+    image?: StringNullableWithAggregatesFilter<"User"> | string | null
+    location?: StringNullableWithAggregatesFilter<"User"> | string | null
+    website?: StringNullableWithAggregatesFilter<"User"> | string | null
+    socialLinks?: JsonNullableWithAggregatesFilter<"User">
   }
 
   export type ServiceWhereInput = {
@@ -10463,6 +10585,11 @@ export namespace Prisma {
     reservations?: number
     createdAt?: Date | string
     plan?: $Enums.SubscriptionPlan
+    bio?: string | null
+    image?: string | null
+    location?: string | null
+    website?: string | null
+    socialLinks?: NullableJsonNullValueInput | InputJsonValue
     services?: ServiceCreateNestedManyWithoutUserInput
     dispos?: AvailabilityCreateNestedManyWithoutUserInput
     rdvs?: RdvCreateNestedManyWithoutUserInput
@@ -10482,6 +10609,11 @@ export namespace Prisma {
     reservations?: number
     createdAt?: Date | string
     plan?: $Enums.SubscriptionPlan
+    bio?: string | null
+    image?: string | null
+    location?: string | null
+    website?: string | null
+    socialLinks?: NullableJsonNullValueInput | InputJsonValue
     services?: ServiceUncheckedCreateNestedManyWithoutUserInput
     dispos?: AvailabilityUncheckedCreateNestedManyWithoutUserInput
     rdvs?: RdvUncheckedCreateNestedManyWithoutUserInput
@@ -10501,6 +10633,11 @@ export namespace Prisma {
     reservations?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     plan?: EnumSubscriptionPlanFieldUpdateOperationsInput | $Enums.SubscriptionPlan
+    bio?: NullableStringFieldUpdateOperationsInput | string | null
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    location?: NullableStringFieldUpdateOperationsInput | string | null
+    website?: NullableStringFieldUpdateOperationsInput | string | null
+    socialLinks?: NullableJsonNullValueInput | InputJsonValue
     services?: ServiceUpdateManyWithoutUserNestedInput
     dispos?: AvailabilityUpdateManyWithoutUserNestedInput
     rdvs?: RdvUpdateManyWithoutUserNestedInput
@@ -10520,6 +10657,11 @@ export namespace Prisma {
     reservations?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     plan?: EnumSubscriptionPlanFieldUpdateOperationsInput | $Enums.SubscriptionPlan
+    bio?: NullableStringFieldUpdateOperationsInput | string | null
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    location?: NullableStringFieldUpdateOperationsInput | string | null
+    website?: NullableStringFieldUpdateOperationsInput | string | null
+    socialLinks?: NullableJsonNullValueInput | InputJsonValue
     services?: ServiceUncheckedUpdateManyWithoutUserNestedInput
     dispos?: AvailabilityUncheckedUpdateManyWithoutUserNestedInput
     rdvs?: RdvUncheckedUpdateManyWithoutUserNestedInput
@@ -10539,6 +10681,11 @@ export namespace Prisma {
     reservations?: number
     createdAt?: Date | string
     plan?: $Enums.SubscriptionPlan
+    bio?: string | null
+    image?: string | null
+    location?: string | null
+    website?: string | null
+    socialLinks?: NullableJsonNullValueInput | InputJsonValue
   }
 
   export type UserUpdateManyMutationInput = {
@@ -10552,6 +10699,11 @@ export namespace Prisma {
     reservations?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     plan?: EnumSubscriptionPlanFieldUpdateOperationsInput | $Enums.SubscriptionPlan
+    bio?: NullableStringFieldUpdateOperationsInput | string | null
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    location?: NullableStringFieldUpdateOperationsInput | string | null
+    website?: NullableStringFieldUpdateOperationsInput | string | null
+    socialLinks?: NullableJsonNullValueInput | InputJsonValue
   }
 
   export type UserUncheckedUpdateManyInput = {
@@ -10565,6 +10717,11 @@ export namespace Prisma {
     reservations?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     plan?: EnumSubscriptionPlanFieldUpdateOperationsInput | $Enums.SubscriptionPlan
+    bio?: NullableStringFieldUpdateOperationsInput | string | null
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    location?: NullableStringFieldUpdateOperationsInput | string | null
+    website?: NullableStringFieldUpdateOperationsInput | string | null
+    socialLinks?: NullableJsonNullValueInput | InputJsonValue
   }
 
   export type ServiceCreateInput = {
@@ -11069,6 +11226,29 @@ export namespace Prisma {
     notIn?: $Enums.SubscriptionPlan[] | ListEnumSubscriptionPlanFieldRefInput<$PrismaModel>
     not?: NestedEnumSubscriptionPlanFilter<$PrismaModel> | $Enums.SubscriptionPlan
   }
+  export type JsonNullableFilter<$PrismaModel = never> =
+    | PatchUndefined<
+        Either<Required<JsonNullableFilterBase<$PrismaModel>>, Exclude<keyof Required<JsonNullableFilterBase<$PrismaModel>>, 'path'>>,
+        Required<JsonNullableFilterBase<$PrismaModel>>
+      >
+    | OptionalFlat<Omit<Required<JsonNullableFilterBase<$PrismaModel>>, 'path'>>
+
+  export type JsonNullableFilterBase<$PrismaModel = never> = {
+    equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+    path?: string[]
+    mode?: QueryMode | EnumQueryModeFieldRefInput<$PrismaModel>
+    string_contains?: string | StringFieldRefInput<$PrismaModel>
+    string_starts_with?: string | StringFieldRefInput<$PrismaModel>
+    string_ends_with?: string | StringFieldRefInput<$PrismaModel>
+    array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    lt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    lte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+  }
 
   export type ServiceListRelationFilter = {
     every?: ServiceWhereInput
@@ -11146,6 +11326,11 @@ export namespace Prisma {
     reservations?: SortOrder
     createdAt?: SortOrder
     plan?: SortOrder
+    bio?: SortOrder
+    image?: SortOrder
+    location?: SortOrder
+    website?: SortOrder
+    socialLinks?: SortOrder
   }
 
   export type UserAvgOrderByAggregateInput = {
@@ -11163,6 +11348,10 @@ export namespace Prisma {
     reservations?: SortOrder
     createdAt?: SortOrder
     plan?: SortOrder
+    bio?: SortOrder
+    image?: SortOrder
+    location?: SortOrder
+    website?: SortOrder
   }
 
   export type UserMinOrderByAggregateInput = {
@@ -11176,6 +11365,10 @@ export namespace Prisma {
     reservations?: SortOrder
     createdAt?: SortOrder
     plan?: SortOrder
+    bio?: SortOrder
+    image?: SortOrder
+    location?: SortOrder
+    website?: SortOrder
   }
 
   export type UserSumOrderByAggregateInput = {
@@ -11266,6 +11459,32 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedEnumSubscriptionPlanFilter<$PrismaModel>
     _max?: NestedEnumSubscriptionPlanFilter<$PrismaModel>
+  }
+  export type JsonNullableWithAggregatesFilter<$PrismaModel = never> =
+    | PatchUndefined<
+        Either<Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>, Exclude<keyof Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>, 'path'>>,
+        Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>
+      >
+    | OptionalFlat<Omit<Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>, 'path'>>
+
+  export type JsonNullableWithAggregatesFilterBase<$PrismaModel = never> = {
+    equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+    path?: string[]
+    mode?: QueryMode | EnumQueryModeFieldRefInput<$PrismaModel>
+    string_contains?: string | StringFieldRefInput<$PrismaModel>
+    string_starts_with?: string | StringFieldRefInput<$PrismaModel>
+    string_ends_with?: string | StringFieldRefInput<$PrismaModel>
+    array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    lt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    lte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedJsonNullableFilter<$PrismaModel>
+    _max?: NestedJsonNullableFilter<$PrismaModel>
   }
 
   export type IntNullableFilter<$PrismaModel = never> = {
@@ -12313,6 +12532,29 @@ export namespace Prisma {
     _min?: NestedEnumSubscriptionPlanFilter<$PrismaModel>
     _max?: NestedEnumSubscriptionPlanFilter<$PrismaModel>
   }
+  export type NestedJsonNullableFilter<$PrismaModel = never> =
+    | PatchUndefined<
+        Either<Required<NestedJsonNullableFilterBase<$PrismaModel>>, Exclude<keyof Required<NestedJsonNullableFilterBase<$PrismaModel>>, 'path'>>,
+        Required<NestedJsonNullableFilterBase<$PrismaModel>>
+      >
+    | OptionalFlat<Omit<Required<NestedJsonNullableFilterBase<$PrismaModel>>, 'path'>>
+
+  export type NestedJsonNullableFilterBase<$PrismaModel = never> = {
+    equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+    path?: string[]
+    mode?: QueryMode | EnumQueryModeFieldRefInput<$PrismaModel>
+    string_contains?: string | StringFieldRefInput<$PrismaModel>
+    string_starts_with?: string | StringFieldRefInput<$PrismaModel>
+    string_ends_with?: string | StringFieldRefInput<$PrismaModel>
+    array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    lt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    lte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+  }
 
   export type NestedIntNullableWithAggregatesFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel> | null
@@ -12752,6 +12994,11 @@ export namespace Prisma {
     reservations?: number
     createdAt?: Date | string
     plan?: $Enums.SubscriptionPlan
+    bio?: string | null
+    image?: string | null
+    location?: string | null
+    website?: string | null
+    socialLinks?: NullableJsonNullValueInput | InputJsonValue
     dispos?: AvailabilityCreateNestedManyWithoutUserInput
     rdvs?: RdvCreateNestedManyWithoutUserInput
     clients?: ClientCreateNestedManyWithoutUserInput
@@ -12770,6 +13017,11 @@ export namespace Prisma {
     reservations?: number
     createdAt?: Date | string
     plan?: $Enums.SubscriptionPlan
+    bio?: string | null
+    image?: string | null
+    location?: string | null
+    website?: string | null
+    socialLinks?: NullableJsonNullValueInput | InputJsonValue
     dispos?: AvailabilityUncheckedCreateNestedManyWithoutUserInput
     rdvs?: RdvUncheckedCreateNestedManyWithoutUserInput
     clients?: ClientUncheckedCreateNestedManyWithoutUserInput
@@ -12842,6 +13094,11 @@ export namespace Prisma {
     reservations?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     plan?: EnumSubscriptionPlanFieldUpdateOperationsInput | $Enums.SubscriptionPlan
+    bio?: NullableStringFieldUpdateOperationsInput | string | null
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    location?: NullableStringFieldUpdateOperationsInput | string | null
+    website?: NullableStringFieldUpdateOperationsInput | string | null
+    socialLinks?: NullableJsonNullValueInput | InputJsonValue
     dispos?: AvailabilityUpdateManyWithoutUserNestedInput
     rdvs?: RdvUpdateManyWithoutUserNestedInput
     clients?: ClientUpdateManyWithoutUserNestedInput
@@ -12860,6 +13117,11 @@ export namespace Prisma {
     reservations?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     plan?: EnumSubscriptionPlanFieldUpdateOperationsInput | $Enums.SubscriptionPlan
+    bio?: NullableStringFieldUpdateOperationsInput | string | null
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    location?: NullableStringFieldUpdateOperationsInput | string | null
+    website?: NullableStringFieldUpdateOperationsInput | string | null
+    socialLinks?: NullableJsonNullValueInput | InputJsonValue
     dispos?: AvailabilityUncheckedUpdateManyWithoutUserNestedInput
     rdvs?: RdvUncheckedUpdateManyWithoutUserNestedInput
     clients?: ClientUncheckedUpdateManyWithoutUserNestedInput
@@ -12894,6 +13156,11 @@ export namespace Prisma {
     reservations?: number
     createdAt?: Date | string
     plan?: $Enums.SubscriptionPlan
+    bio?: string | null
+    image?: string | null
+    location?: string | null
+    website?: string | null
+    socialLinks?: NullableJsonNullValueInput | InputJsonValue
     services?: ServiceCreateNestedManyWithoutUserInput
     rdvs?: RdvCreateNestedManyWithoutUserInput
     clients?: ClientCreateNestedManyWithoutUserInput
@@ -12912,6 +13179,11 @@ export namespace Prisma {
     reservations?: number
     createdAt?: Date | string
     plan?: $Enums.SubscriptionPlan
+    bio?: string | null
+    image?: string | null
+    location?: string | null
+    website?: string | null
+    socialLinks?: NullableJsonNullValueInput | InputJsonValue
     services?: ServiceUncheckedCreateNestedManyWithoutUserInput
     rdvs?: RdvUncheckedCreateNestedManyWithoutUserInput
     clients?: ClientUncheckedCreateNestedManyWithoutUserInput
@@ -12946,6 +13218,11 @@ export namespace Prisma {
     reservations?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     plan?: EnumSubscriptionPlanFieldUpdateOperationsInput | $Enums.SubscriptionPlan
+    bio?: NullableStringFieldUpdateOperationsInput | string | null
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    location?: NullableStringFieldUpdateOperationsInput | string | null
+    website?: NullableStringFieldUpdateOperationsInput | string | null
+    socialLinks?: NullableJsonNullValueInput | InputJsonValue
     services?: ServiceUpdateManyWithoutUserNestedInput
     rdvs?: RdvUpdateManyWithoutUserNestedInput
     clients?: ClientUpdateManyWithoutUserNestedInput
@@ -12964,6 +13241,11 @@ export namespace Prisma {
     reservations?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     plan?: EnumSubscriptionPlanFieldUpdateOperationsInput | $Enums.SubscriptionPlan
+    bio?: NullableStringFieldUpdateOperationsInput | string | null
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    location?: NullableStringFieldUpdateOperationsInput | string | null
+    website?: NullableStringFieldUpdateOperationsInput | string | null
+    socialLinks?: NullableJsonNullValueInput | InputJsonValue
     services?: ServiceUncheckedUpdateManyWithoutUserNestedInput
     rdvs?: RdvUncheckedUpdateManyWithoutUserNestedInput
     clients?: ClientUncheckedUpdateManyWithoutUserNestedInput
@@ -13007,6 +13289,11 @@ export namespace Prisma {
     reservations?: number
     createdAt?: Date | string
     plan?: $Enums.SubscriptionPlan
+    bio?: string | null
+    image?: string | null
+    location?: string | null
+    website?: string | null
+    socialLinks?: NullableJsonNullValueInput | InputJsonValue
     services?: ServiceCreateNestedManyWithoutUserInput
     dispos?: AvailabilityCreateNestedManyWithoutUserInput
     clients?: ClientCreateNestedManyWithoutUserInput
@@ -13025,6 +13312,11 @@ export namespace Prisma {
     reservations?: number
     createdAt?: Date | string
     plan?: $Enums.SubscriptionPlan
+    bio?: string | null
+    image?: string | null
+    location?: string | null
+    website?: string | null
+    socialLinks?: NullableJsonNullValueInput | InputJsonValue
     services?: ServiceUncheckedCreateNestedManyWithoutUserInput
     dispos?: AvailabilityUncheckedCreateNestedManyWithoutUserInput
     clients?: ClientUncheckedCreateNestedManyWithoutUserInput
@@ -13138,6 +13430,11 @@ export namespace Prisma {
     reservations?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     plan?: EnumSubscriptionPlanFieldUpdateOperationsInput | $Enums.SubscriptionPlan
+    bio?: NullableStringFieldUpdateOperationsInput | string | null
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    location?: NullableStringFieldUpdateOperationsInput | string | null
+    website?: NullableStringFieldUpdateOperationsInput | string | null
+    socialLinks?: NullableJsonNullValueInput | InputJsonValue
     services?: ServiceUpdateManyWithoutUserNestedInput
     dispos?: AvailabilityUpdateManyWithoutUserNestedInput
     clients?: ClientUpdateManyWithoutUserNestedInput
@@ -13156,6 +13453,11 @@ export namespace Prisma {
     reservations?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     plan?: EnumSubscriptionPlanFieldUpdateOperationsInput | $Enums.SubscriptionPlan
+    bio?: NullableStringFieldUpdateOperationsInput | string | null
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    location?: NullableStringFieldUpdateOperationsInput | string | null
+    website?: NullableStringFieldUpdateOperationsInput | string | null
+    socialLinks?: NullableJsonNullValueInput | InputJsonValue
     services?: ServiceUncheckedUpdateManyWithoutUserNestedInput
     dispos?: AvailabilityUncheckedUpdateManyWithoutUserNestedInput
     clients?: ClientUncheckedUpdateManyWithoutUserNestedInput
@@ -13234,6 +13536,11 @@ export namespace Prisma {
     reservations?: number
     createdAt?: Date | string
     plan?: $Enums.SubscriptionPlan
+    bio?: string | null
+    image?: string | null
+    location?: string | null
+    website?: string | null
+    socialLinks?: NullableJsonNullValueInput | InputJsonValue
     services?: ServiceCreateNestedManyWithoutUserInput
     dispos?: AvailabilityCreateNestedManyWithoutUserInput
     rdvs?: RdvCreateNestedManyWithoutUserInput
@@ -13252,6 +13559,11 @@ export namespace Prisma {
     reservations?: number
     createdAt?: Date | string
     plan?: $Enums.SubscriptionPlan
+    bio?: string | null
+    image?: string | null
+    location?: string | null
+    website?: string | null
+    socialLinks?: NullableJsonNullValueInput | InputJsonValue
     services?: ServiceUncheckedCreateNestedManyWithoutUserInput
     dispos?: AvailabilityUncheckedCreateNestedManyWithoutUserInput
     rdvs?: RdvUncheckedCreateNestedManyWithoutUserInput
@@ -13324,6 +13636,11 @@ export namespace Prisma {
     reservations?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     plan?: EnumSubscriptionPlanFieldUpdateOperationsInput | $Enums.SubscriptionPlan
+    bio?: NullableStringFieldUpdateOperationsInput | string | null
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    location?: NullableStringFieldUpdateOperationsInput | string | null
+    website?: NullableStringFieldUpdateOperationsInput | string | null
+    socialLinks?: NullableJsonNullValueInput | InputJsonValue
     services?: ServiceUpdateManyWithoutUserNestedInput
     dispos?: AvailabilityUpdateManyWithoutUserNestedInput
     rdvs?: RdvUpdateManyWithoutUserNestedInput
@@ -13342,6 +13659,11 @@ export namespace Prisma {
     reservations?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     plan?: EnumSubscriptionPlanFieldUpdateOperationsInput | $Enums.SubscriptionPlan
+    bio?: NullableStringFieldUpdateOperationsInput | string | null
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    location?: NullableStringFieldUpdateOperationsInput | string | null
+    website?: NullableStringFieldUpdateOperationsInput | string | null
+    socialLinks?: NullableJsonNullValueInput | InputJsonValue
     services?: ServiceUncheckedUpdateManyWithoutUserNestedInput
     dispos?: AvailabilityUncheckedUpdateManyWithoutUserNestedInput
     rdvs?: RdvUncheckedUpdateManyWithoutUserNestedInput
@@ -13376,6 +13698,11 @@ export namespace Prisma {
     reservations?: number
     createdAt?: Date | string
     plan?: $Enums.SubscriptionPlan
+    bio?: string | null
+    image?: string | null
+    location?: string | null
+    website?: string | null
+    socialLinks?: NullableJsonNullValueInput | InputJsonValue
     services?: ServiceCreateNestedManyWithoutUserInput
     dispos?: AvailabilityCreateNestedManyWithoutUserInput
     rdvs?: RdvCreateNestedManyWithoutUserInput
@@ -13394,6 +13721,11 @@ export namespace Prisma {
     reservations?: number
     createdAt?: Date | string
     plan?: $Enums.SubscriptionPlan
+    bio?: string | null
+    image?: string | null
+    location?: string | null
+    website?: string | null
+    socialLinks?: NullableJsonNullValueInput | InputJsonValue
     services?: ServiceUncheckedCreateNestedManyWithoutUserInput
     dispos?: AvailabilityUncheckedCreateNestedManyWithoutUserInput
     rdvs?: RdvUncheckedCreateNestedManyWithoutUserInput
@@ -13428,6 +13760,11 @@ export namespace Prisma {
     reservations?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     plan?: EnumSubscriptionPlanFieldUpdateOperationsInput | $Enums.SubscriptionPlan
+    bio?: NullableStringFieldUpdateOperationsInput | string | null
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    location?: NullableStringFieldUpdateOperationsInput | string | null
+    website?: NullableStringFieldUpdateOperationsInput | string | null
+    socialLinks?: NullableJsonNullValueInput | InputJsonValue
     services?: ServiceUpdateManyWithoutUserNestedInput
     dispos?: AvailabilityUpdateManyWithoutUserNestedInput
     rdvs?: RdvUpdateManyWithoutUserNestedInput
@@ -13446,6 +13783,11 @@ export namespace Prisma {
     reservations?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     plan?: EnumSubscriptionPlanFieldUpdateOperationsInput | $Enums.SubscriptionPlan
+    bio?: NullableStringFieldUpdateOperationsInput | string | null
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    location?: NullableStringFieldUpdateOperationsInput | string | null
+    website?: NullableStringFieldUpdateOperationsInput | string | null
+    socialLinks?: NullableJsonNullValueInput | InputJsonValue
     services?: ServiceUncheckedUpdateManyWithoutUserNestedInput
     dispos?: AvailabilityUncheckedUpdateManyWithoutUserNestedInput
     rdvs?: RdvUncheckedUpdateManyWithoutUserNestedInput
@@ -13497,6 +13839,11 @@ export namespace Prisma {
     reservations?: number
     createdAt?: Date | string
     plan?: $Enums.SubscriptionPlan
+    bio?: string | null
+    image?: string | null
+    location?: string | null
+    website?: string | null
+    socialLinks?: NullableJsonNullValueInput | InputJsonValue
     services?: ServiceCreateNestedManyWithoutUserInput
     dispos?: AvailabilityCreateNestedManyWithoutUserInput
     rdvs?: RdvCreateNestedManyWithoutUserInput
@@ -13515,6 +13862,11 @@ export namespace Prisma {
     reservations?: number
     createdAt?: Date | string
     plan?: $Enums.SubscriptionPlan
+    bio?: string | null
+    image?: string | null
+    location?: string | null
+    website?: string | null
+    socialLinks?: NullableJsonNullValueInput | InputJsonValue
     services?: ServiceUncheckedCreateNestedManyWithoutUserInput
     dispos?: AvailabilityUncheckedCreateNestedManyWithoutUserInput
     rdvs?: RdvUncheckedCreateNestedManyWithoutUserInput
@@ -13588,6 +13940,11 @@ export namespace Prisma {
     reservations?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     plan?: EnumSubscriptionPlanFieldUpdateOperationsInput | $Enums.SubscriptionPlan
+    bio?: NullableStringFieldUpdateOperationsInput | string | null
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    location?: NullableStringFieldUpdateOperationsInput | string | null
+    website?: NullableStringFieldUpdateOperationsInput | string | null
+    socialLinks?: NullableJsonNullValueInput | InputJsonValue
     services?: ServiceUpdateManyWithoutUserNestedInput
     dispos?: AvailabilityUpdateManyWithoutUserNestedInput
     rdvs?: RdvUpdateManyWithoutUserNestedInput
@@ -13606,6 +13963,11 @@ export namespace Prisma {
     reservations?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     plan?: EnumSubscriptionPlanFieldUpdateOperationsInput | $Enums.SubscriptionPlan
+    bio?: NullableStringFieldUpdateOperationsInput | string | null
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    location?: NullableStringFieldUpdateOperationsInput | string | null
+    website?: NullableStringFieldUpdateOperationsInput | string | null
+    socialLinks?: NullableJsonNullValueInput | InputJsonValue
     services?: ServiceUncheckedUpdateManyWithoutUserNestedInput
     dispos?: AvailabilityUncheckedUpdateManyWithoutUserNestedInput
     rdvs?: RdvUncheckedUpdateManyWithoutUserNestedInput

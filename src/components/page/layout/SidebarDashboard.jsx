@@ -33,7 +33,7 @@ import {
   ChevronUpIcon,
   Cog8ToothIcon,
   LightBulbIcon,
-  PlusIcon,
+  GlobeAltIcon,
   ShieldCheckIcon,
   UserIcon,
 } from '@heroicons/react/16/solid'
@@ -100,6 +100,10 @@ export function SidebarDashboard({ children }) {
               <SidebarItem href="/dashboard/clients">
                 <UsersIcon />
                 <SidebarLabel>Clients</SidebarLabel>
+              </SidebarItem>
+              <SidebarItem href="/dashboard/profile">
+                <GlobeAltIcon />
+                <SidebarLabel>Page publique</SidebarLabel>
               </SidebarItem>
             </SidebarSection>
             <SidebarSpacer />

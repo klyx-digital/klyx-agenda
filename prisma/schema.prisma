@@ -31,6 +31,11 @@ model User {
   reservations Int              @default(0) // compteur mensuel pour l'offre gratuite
   createdAt    DateTime         @default(now())
   plan         SubscriptionPlan @default(FREE)
+  bio          String?          // Description du professionnel
+  image        String?          // Photo de profil ou logo
+  location     String?          // Ville ou localisation
+  website      String?          // Lien vers un site personnel ou professionnel
+  socialLinks  Json?            // Liens vers les réseaux sociaux
 }
 
 enum SubscriptionPlan {
