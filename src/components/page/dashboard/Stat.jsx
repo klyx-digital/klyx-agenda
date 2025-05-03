@@ -31,14 +31,6 @@ const stats = [
     change: '12%',
     changeType: 'increase',
   },
-  {
-    id: 4,
-    name: 'Messages récents',
-    stat: '58',
-    icon: ChatBubbleLeftEllipsisIcon,
-    change: '5',
-    changeType: 'increase',
-  },
 ]
 
 function classNames(...classes) {

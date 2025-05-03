@@ -101,10 +101,6 @@ export function SidebarDashboard({ children }) {
                 <UsersIcon />
                 <SidebarLabel>Clients</SidebarLabel>
               </SidebarItem>
-              <SidebarItem href="/dashboard/messages">
-                <ChatBubbleLeftRightIcon />
-                <SidebarLabel>Messages</SidebarLabel>
-              </SidebarItem>
             </SidebarSection>
             <SidebarSpacer />
             <SidebarSection>
