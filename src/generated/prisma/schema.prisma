@@ -20,6 +20,7 @@ model User {
   password     String
   firstName    String?
   lastName     String?
+  businessName String?
   slug         String?          @unique
   role         Role             @default(PRO)
   services     Service[]

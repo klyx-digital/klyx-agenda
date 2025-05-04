@@ -1619,6 +1619,7 @@ export namespace Prisma {
     password: string | null
     firstName: string | null
     lastName: string | null
+    businessName: string | null
     slug: string | null
     role: $Enums.Role | null
     reservations: number | null
@@ -1636,6 +1637,7 @@ export namespace Prisma {
     password: string | null
     firstName: string | null
     lastName: string | null
+    businessName: string | null
     slug: string | null
     role: $Enums.Role | null
     reservations: number | null
@@ -1653,6 +1655,7 @@ export namespace Prisma {
     password: number
     firstName: number
     lastName: number
+    businessName: number
     slug: number
     role: number
     reservations: number
@@ -1681,6 +1684,7 @@ export namespace Prisma {
     password?: true
     firstName?: true
     lastName?: true
+    businessName?: true
     slug?: true
     role?: true
     reservations?: true
@@ -1698,6 +1702,7 @@ export namespace Prisma {
     password?: true
     firstName?: true
     lastName?: true
+    businessName?: true
     slug?: true
     role?: true
     reservations?: true
@@ -1715,6 +1720,7 @@ export namespace Prisma {
     password?: true
     firstName?: true
     lastName?: true
+    businessName?: true
     slug?: true
     role?: true
     reservations?: true
@@ -1820,6 +1826,7 @@ export namespace Prisma {
     password: string
     firstName: string | null
     lastName: string | null
+    businessName: string | null
     slug: string | null
     role: $Enums.Role
     reservations: number
@@ -1857,6 +1864,7 @@ export namespace Prisma {
     password?: boolean
     firstName?: boolean
     lastName?: boolean
+    businessName?: boolean
     slug?: boolean
     role?: boolean
     reservations?: boolean
@@ -1882,6 +1890,7 @@ export namespace Prisma {
     password?: boolean
     firstName?: boolean
     lastName?: boolean
+    businessName?: boolean
     slug?: boolean
     role?: boolean
     reservations?: boolean
@@ -1900,6 +1909,7 @@ export namespace Prisma {
     password?: boolean
     firstName?: boolean
     lastName?: boolean
+    businessName?: boolean
     slug?: boolean
     role?: boolean
     reservations?: boolean
@@ -1918,6 +1928,7 @@ export namespace Prisma {
     password?: boolean
     firstName?: boolean
     lastName?: boolean
+    businessName?: boolean
     slug?: boolean
     role?: boolean
     reservations?: boolean
@@ -1930,7 +1941,7 @@ export namespace Prisma {
     socialLinks?: boolean
   }
 
-  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "email" | "password" | "firstName" | "lastName" | "slug" | "role" | "reservations" | "createdAt" | "plan" | "bio" | "image" | "location" | "website" | "socialLinks", ExtArgs["result"]["user"]>
+  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "email" | "password" | "firstName" | "lastName" | "businessName" | "slug" | "role" | "reservations" | "createdAt" | "plan" | "bio" | "image" | "location" | "website" | "socialLinks", ExtArgs["result"]["user"]>
   export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     services?: boolean | User$servicesArgs<ExtArgs>
     dispos?: boolean | User$disposArgs<ExtArgs>
@@ -1959,6 +1970,7 @@ export namespace Prisma {
       password: string
       firstName: string | null
       lastName: string | null
+      businessName: string | null
       slug: string | null
       role: $Enums.Role
       reservations: number
@@ -2403,6 +2415,7 @@ export namespace Prisma {
     readonly password: FieldRef<"User", 'String'>
     readonly firstName: FieldRef<"User", 'String'>
     readonly lastName: FieldRef<"User", 'String'>
+    readonly businessName: FieldRef<"User", 'String'>
     readonly slug: FieldRef<"User", 'String'>
     readonly role: FieldRef<"User", 'Role'>
     readonly reservations: FieldRef<"User", 'Int'>
@@ -9764,6 +9777,7 @@ export namespace Prisma {
     password: 'password',
     firstName: 'firstName',
     lastName: 'lastName',
+    businessName: 'businessName',
     slug: 'slug',
     role: 'role',
     reservations: 'reservations',
@@ -10036,6 +10050,7 @@ export namespace Prisma {
     password?: StringFilter<"User"> | string
     firstName?: StringNullableFilter<"User"> | string | null
     lastName?: StringNullableFilter<"User"> | string | null
+    businessName?: StringNullableFilter<"User"> | string | null
     slug?: StringNullableFilter<"User"> | string | null
     role?: EnumRoleFilter<"User"> | $Enums.Role
     reservations?: IntFilter<"User"> | number
@@ -10060,6 +10075,7 @@ export namespace Prisma {
     password?: SortOrder
     firstName?: SortOrderInput | SortOrder
     lastName?: SortOrderInput | SortOrder
+    businessName?: SortOrderInput | SortOrder
     slug?: SortOrderInput | SortOrder
     role?: SortOrder
     reservations?: SortOrder
@@ -10088,6 +10104,7 @@ export namespace Prisma {
     password?: StringFilter<"User"> | string
     firstName?: StringNullableFilter<"User"> | string | null
     lastName?: StringNullableFilter<"User"> | string | null
+    businessName?: StringNullableFilter<"User"> | string | null
     role?: EnumRoleFilter<"User"> | $Enums.Role
     reservations?: IntFilter<"User"> | number
     createdAt?: DateTimeFilter<"User"> | Date | string
@@ -10111,6 +10128,7 @@ export namespace Prisma {
     password?: SortOrder
     firstName?: SortOrderInput | SortOrder
     lastName?: SortOrderInput | SortOrder
+    businessName?: SortOrderInput | SortOrder
     slug?: SortOrderInput | SortOrder
     role?: SortOrder
     reservations?: SortOrder
@@ -10137,6 +10155,7 @@ export namespace Prisma {
     password?: StringWithAggregatesFilter<"User"> | string
     firstName?: StringNullableWithAggregatesFilter<"User"> | string | null
     lastName?: StringNullableWithAggregatesFilter<"User"> | string | null
+    businessName?: StringNullableWithAggregatesFilter<"User"> | string | null
     slug?: StringNullableWithAggregatesFilter<"User"> | string | null
     role?: EnumRoleWithAggregatesFilter<"User"> | $Enums.Role
     reservations?: IntWithAggregatesFilter<"User"> | number
@@ -10580,6 +10599,7 @@ export namespace Prisma {
     password: string
     firstName?: string | null
     lastName?: string | null
+    businessName?: string | null
     slug?: string | null
     role?: $Enums.Role
     reservations?: number
@@ -10604,6 +10624,7 @@ export namespace Prisma {
     password: string
     firstName?: string | null
     lastName?: string | null
+    businessName?: string | null
     slug?: string | null
     role?: $Enums.Role
     reservations?: number
@@ -10628,6 +10649,7 @@ export namespace Prisma {
     password?: StringFieldUpdateOperationsInput | string
     firstName?: NullableStringFieldUpdateOperationsInput | string | null
     lastName?: NullableStringFieldUpdateOperationsInput | string | null
+    businessName?: NullableStringFieldUpdateOperationsInput | string | null
     slug?: NullableStringFieldUpdateOperationsInput | string | null
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     reservations?: IntFieldUpdateOperationsInput | number
@@ -10652,6 +10674,7 @@ export namespace Prisma {
     password?: StringFieldUpdateOperationsInput | string
     firstName?: NullableStringFieldUpdateOperationsInput | string | null
     lastName?: NullableStringFieldUpdateOperationsInput | string | null
+    businessName?: NullableStringFieldUpdateOperationsInput | string | null
     slug?: NullableStringFieldUpdateOperationsInput | string | null
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     reservations?: IntFieldUpdateOperationsInput | number
@@ -10676,6 +10699,7 @@ export namespace Prisma {
     password: string
     firstName?: string | null
     lastName?: string | null
+    businessName?: string | null
     slug?: string | null
     role?: $Enums.Role
     reservations?: number
@@ -10694,6 +10718,7 @@ export namespace Prisma {
     password?: StringFieldUpdateOperationsInput | string
     firstName?: NullableStringFieldUpdateOperationsInput | string | null
     lastName?: NullableStringFieldUpdateOperationsInput | string | null
+    businessName?: NullableStringFieldUpdateOperationsInput | string | null
     slug?: NullableStringFieldUpdateOperationsInput | string | null
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     reservations?: IntFieldUpdateOperationsInput | number
@@ -10712,6 +10737,7 @@ export namespace Prisma {
     password?: StringFieldUpdateOperationsInput | string
     firstName?: NullableStringFieldUpdateOperationsInput | string | null
     lastName?: NullableStringFieldUpdateOperationsInput | string | null
+    businessName?: NullableStringFieldUpdateOperationsInput | string | null
     slug?: NullableStringFieldUpdateOperationsInput | string | null
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     reservations?: IntFieldUpdateOperationsInput | number
@@ -11321,6 +11347,7 @@ export namespace Prisma {
     password?: SortOrder
     firstName?: SortOrder
     lastName?: SortOrder
+    businessName?: SortOrder
     slug?: SortOrder
     role?: SortOrder
     reservations?: SortOrder
@@ -11343,6 +11370,7 @@ export namespace Prisma {
     password?: SortOrder
     firstName?: SortOrder
     lastName?: SortOrder
+    businessName?: SortOrder
     slug?: SortOrder
     role?: SortOrder
     reservations?: SortOrder
@@ -11360,6 +11388,7 @@ export namespace Prisma {
     password?: SortOrder
     firstName?: SortOrder
     lastName?: SortOrder
+    businessName?: SortOrder
     slug?: SortOrder
     role?: SortOrder
     reservations?: SortOrder
@@ -12989,6 +13018,7 @@ export namespace Prisma {
     password: string
     firstName?: string | null
     lastName?: string | null
+    businessName?: string | null
     slug?: string | null
     role?: $Enums.Role
     reservations?: number
@@ -13012,6 +13042,7 @@ export namespace Prisma {
     password: string
     firstName?: string | null
     lastName?: string | null
+    businessName?: string | null
     slug?: string | null
     role?: $Enums.Role
     reservations?: number
@@ -13089,6 +13120,7 @@ export namespace Prisma {
     password?: StringFieldUpdateOperationsInput | string
     firstName?: NullableStringFieldUpdateOperationsInput | string | null
     lastName?: NullableStringFieldUpdateOperationsInput | string | null
+    businessName?: NullableStringFieldUpdateOperationsInput | string | null
     slug?: NullableStringFieldUpdateOperationsInput | string | null
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     reservations?: IntFieldUpdateOperationsInput | number
@@ -13112,6 +13144,7 @@ export namespace Prisma {
     password?: StringFieldUpdateOperationsInput | string
     firstName?: NullableStringFieldUpdateOperationsInput | string | null
     lastName?: NullableStringFieldUpdateOperationsInput | string | null
+    businessName?: NullableStringFieldUpdateOperationsInput | string | null
     slug?: NullableStringFieldUpdateOperationsInput | string | null
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     reservations?: IntFieldUpdateOperationsInput | number
@@ -13151,6 +13184,7 @@ export namespace Prisma {
     password: string
     firstName?: string | null
     lastName?: string | null
+    businessName?: string | null
     slug?: string | null
     role?: $Enums.Role
     reservations?: number
@@ -13174,6 +13208,7 @@ export namespace Prisma {
     password: string
     firstName?: string | null
     lastName?: string | null
+    businessName?: string | null
     slug?: string | null
     role?: $Enums.Role
     reservations?: number
@@ -13213,6 +13248,7 @@ export namespace Prisma {
     password?: StringFieldUpdateOperationsInput | string
     firstName?: NullableStringFieldUpdateOperationsInput | string | null
     lastName?: NullableStringFieldUpdateOperationsInput | string | null
+    businessName?: NullableStringFieldUpdateOperationsInput | string | null
     slug?: NullableStringFieldUpdateOperationsInput | string | null
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     reservations?: IntFieldUpdateOperationsInput | number
@@ -13236,6 +13272,7 @@ export namespace Prisma {
     password?: StringFieldUpdateOperationsInput | string
     firstName?: NullableStringFieldUpdateOperationsInput | string | null
     lastName?: NullableStringFieldUpdateOperationsInput | string | null
+    businessName?: NullableStringFieldUpdateOperationsInput | string | null
     slug?: NullableStringFieldUpdateOperationsInput | string | null
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     reservations?: IntFieldUpdateOperationsInput | number
@@ -13284,6 +13321,7 @@ export namespace Prisma {
     password: string
     firstName?: string | null
     lastName?: string | null
+    businessName?: string | null
     slug?: string | null
     role?: $Enums.Role
     reservations?: number
@@ -13307,6 +13345,7 @@ export namespace Prisma {
     password: string
     firstName?: string | null
     lastName?: string | null
+    businessName?: string | null
     slug?: string | null
     role?: $Enums.Role
     reservations?: number
@@ -13425,6 +13464,7 @@ export namespace Prisma {
     password?: StringFieldUpdateOperationsInput | string
     firstName?: NullableStringFieldUpdateOperationsInput | string | null
     lastName?: NullableStringFieldUpdateOperationsInput | string | null
+    businessName?: NullableStringFieldUpdateOperationsInput | string | null
     slug?: NullableStringFieldUpdateOperationsInput | string | null
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     reservations?: IntFieldUpdateOperationsInput | number
@@ -13448,6 +13488,7 @@ export namespace Prisma {
     password?: StringFieldUpdateOperationsInput | string
     firstName?: NullableStringFieldUpdateOperationsInput | string | null
     lastName?: NullableStringFieldUpdateOperationsInput | string | null
+    businessName?: NullableStringFieldUpdateOperationsInput | string | null
     slug?: NullableStringFieldUpdateOperationsInput | string | null
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     reservations?: IntFieldUpdateOperationsInput | number
@@ -13531,6 +13572,7 @@ export namespace Prisma {
     password: string
     firstName?: string | null
     lastName?: string | null
+    businessName?: string | null
     slug?: string | null
     role?: $Enums.Role
     reservations?: number
@@ -13554,6 +13596,7 @@ export namespace Prisma {
     password: string
     firstName?: string | null
     lastName?: string | null
+    businessName?: string | null
     slug?: string | null
     role?: $Enums.Role
     reservations?: number
@@ -13631,6 +13674,7 @@ export namespace Prisma {
     password?: StringFieldUpdateOperationsInput | string
     firstName?: NullableStringFieldUpdateOperationsInput | string | null
     lastName?: NullableStringFieldUpdateOperationsInput | string | null
+    businessName?: NullableStringFieldUpdateOperationsInput | string | null
     slug?: NullableStringFieldUpdateOperationsInput | string | null
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     reservations?: IntFieldUpdateOperationsInput | number
@@ -13654,6 +13698,7 @@ export namespace Prisma {
     password?: StringFieldUpdateOperationsInput | string
     firstName?: NullableStringFieldUpdateOperationsInput | string | null
     lastName?: NullableStringFieldUpdateOperationsInput | string | null
+    businessName?: NullableStringFieldUpdateOperationsInput | string | null
     slug?: NullableStringFieldUpdateOperationsInput | string | null
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     reservations?: IntFieldUpdateOperationsInput | number
@@ -13693,6 +13738,7 @@ export namespace Prisma {
     password: string
     firstName?: string | null
     lastName?: string | null
+    businessName?: string | null
     slug?: string | null
     role?: $Enums.Role
     reservations?: number
@@ -13716,6 +13762,7 @@ export namespace Prisma {
     password: string
     firstName?: string | null
     lastName?: string | null
+    businessName?: string | null
     slug?: string | null
     role?: $Enums.Role
     reservations?: number
@@ -13755,6 +13802,7 @@ export namespace Prisma {
     password?: StringFieldUpdateOperationsInput | string
     firstName?: NullableStringFieldUpdateOperationsInput | string | null
     lastName?: NullableStringFieldUpdateOperationsInput | string | null
+    businessName?: NullableStringFieldUpdateOperationsInput | string | null
     slug?: NullableStringFieldUpdateOperationsInput | string | null
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     reservations?: IntFieldUpdateOperationsInput | number
@@ -13778,6 +13826,7 @@ export namespace Prisma {
     password?: StringFieldUpdateOperationsInput | string
     firstName?: NullableStringFieldUpdateOperationsInput | string | null
     lastName?: NullableStringFieldUpdateOperationsInput | string | null
+    businessName?: NullableStringFieldUpdateOperationsInput | string | null
     slug?: NullableStringFieldUpdateOperationsInput | string | null
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     reservations?: IntFieldUpdateOperationsInput | number
@@ -13834,6 +13883,7 @@ export namespace Prisma {
     password: string
     firstName?: string | null
     lastName?: string | null
+    businessName?: string | null
     slug?: string | null
     role?: $Enums.Role
     reservations?: number
@@ -13857,6 +13907,7 @@ export namespace Prisma {
     password: string
     firstName?: string | null
     lastName?: string | null
+    businessName?: string | null
     slug?: string | null
     role?: $Enums.Role
     reservations?: number
@@ -13935,6 +13986,7 @@ export namespace Prisma {
     password?: StringFieldUpdateOperationsInput | string
     firstName?: NullableStringFieldUpdateOperationsInput | string | null
     lastName?: NullableStringFieldUpdateOperationsInput | string | null
+    businessName?: NullableStringFieldUpdateOperationsInput | string | null
     slug?: NullableStringFieldUpdateOperationsInput | string | null
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     reservations?: IntFieldUpdateOperationsInput | number
@@ -13958,6 +14010,7 @@ export namespace Prisma {
     password?: StringFieldUpdateOperationsInput | string
     firstName?: NullableStringFieldUpdateOperationsInput | string | null
     lastName?: NullableStringFieldUpdateOperationsInput | string | null
+    businessName?: NullableStringFieldUpdateOperationsInput | string | null
     slug?: NullableStringFieldUpdateOperationsInput | string | null
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     reservations?: IntFieldUpdateOperationsInput | number

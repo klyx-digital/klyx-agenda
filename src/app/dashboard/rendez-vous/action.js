@@ -52,7 +52,6 @@ export async function createRdv(state, formData) {
     statusPaiement: data.paymentStatus,
     duration: data.duration,
   })
-  console.log(validatedFields)
 
   if (!validatedFields.success) {
     return {

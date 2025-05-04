@@ -1,505 +1,502 @@
+'use client'
+
+import { useActionState } from 'react'
+import { infoEntreprise } from './action'
 import { PhotoIcon, UserCircleIcon } from '@heroicons/react/24/solid'
 import {
   ChevronDownIcon,
   ArrowTopRightOnSquareIcon,
 } from '@heroicons/react/16/solid'
-import { Field, Label } from '@/components/ui/fieldset'
 import { Input } from '@/components/ui/input'
 import Link from 'next/link'
+import { Button } from '@/components/ui/Button'
+import {
+  Field,
+  Label,
+  Description,
+  FieldGroup,
+  Fieldset,
+  Legend,
+} from '@/components/ui/fieldset'
+import { Select } from '@/components/ui/select'
+import { Text } from '@/components/ui/text'
+import { Textarea } from '@/components/ui/textarea'
 
 export function FormPublique() {
+  const initialState = { message: {}, error: '' }
+  const [state, formAction, isPending] = useActionState(
+    infoEntreprise,
+    initialState,
+  )
   return (
     <section>
-      <form>
-        <div className="space-y-12">
-          <div className="border-b border-gray-900/10 pb-12">
-            <h2 className="text-base font-semibold text-gray-900">
-              Profil public professionnel
+      {/* EN-TÊTE D'INFORMATION */}
+      <div className="mb-8 rounded-lg border border-indigo-100 bg-blue-50 px-6 py-5 shadow-sm">
+        <h1 className="mb-1 text-lg font-bold text-blue-800">
+          Page publique Klyx
+        </h1>
+        <p className="text-sm text-blue-700">
+          Toutes les informations ci-dessous seront affichées sur votre page
+          publique Klyx. Remplissez-les avec attention pour valoriser votre
+          activité et rassurer vos clients.
+        </p>
+      </div>
+      <div className="space-y-10">
+        {/* SECTION: Informations générales */}
+        <section className="rounded-xl border border-gray-100 bg-white/80 px-6 py-8 shadow-sm">
+          <form action={formAction}>
+            {/* // SECTION: Informations générales */}
+            <h2 className="mb-2 text-lg font-semibold text-gray-900">
+              Informations générales
             </h2>
-            <p className="mt-1 text-sm text-gray-600">
-              Ces informations seront visibles par vos clients sur votre page
-              professionnelle. Renseignez-les avec soin pour refléter votre
-              identité et attirer de nouveaux clients.
+            <p className="mb-6 text-sm text-gray-600">
+              Ces informations définissent l’identité de votre entreprise sur
+              Klyx.
             </p>
-            <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
-              <div className="col-span-full space-y-2">
-                <h3 className="text-base font-semibold">
-                  Informations générales de l’entreprise
-                </h3>
-                <p className="text-sm text-gray-700">
-                  Présentez votre activité en quelques lignes claires et
-                  percutantes.
-                </p>
+            <div className="grid grid-cols-1 gap-x-6 gap-y-6 sm:grid-cols-6">
+              <div className="col-span-full">
                 <Field>
-                  <Label htmlFor="name">Nom de l’entreprise</Label>
+                  <Label
+                    htmlFor="name"
+                    className="block text-sm font-medium text-gray-900"
+                  >
+                    Nom de l’entreprise
+                  </Label>
                   <Input
                     name="name"
-                    id="name"
+                    type="text"
                     aria-label="Nom de l’entreprise"
+                    placeholder="Nom de votre entreprise"
                   />
                 </Field>
               </div>
               <div className="col-span-full">
-                <label
-                  htmlFor="about"
-                  className="block text-sm font-medium text-gray-900"
-                >
-                  Présentation de l&apos;entreprise
-                </label>
-                <div className="mt-2">
-                  <textarea
-                    id="about"
+                <Field>
+                  <Label>Présentation de l’entreprise</Label>
+                  <Textarea
                     name="about"
-                    rows={3}
+                    rows={4}
                     aria-label="Présentation de l'entreprise"
-                    className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm"
+                    placeholder="Décrivez votre entreprise, votre expertise ou votre approche en quelques phrases engageantes."
                     defaultValue={''}
                   />
+                  <Description>
+                    <span className="mt-2 text-xs text-gray-500">
+                      Ce texte sera affiché en haut de votre page publique.
+                    </span>
+                  </Description>
+                </Field>
+                <div className="mt-2">
+                  <Button type="submit" color="blue">
+                    Mettre à jour mes informations générales
+                  </Button>
                 </div>
-                <p className="mt-3 text-sm text-gray-600">
-                  Décrivez votre entreprise, votre expertise ou votre approche.
-                  Ce texte apparaîtra en haut de votre page publique.
-                </p>
               </div>
-              <div className="col-span-full">
-                <label
-                  htmlFor="photo"
-                  className="block text-sm font-medium text-gray-900"
-                >
-                  Logo de l’entreprise
-                </label>
-                <div className="mt-2 flex items-center gap-x-3">
+            </div>
+          </form>
+        </section>
+
+        {/* SECTION: Présentation & visuels */}
+        <section className="rounded-xl border border-gray-100 bg-gray-50 px-6 py-8 shadow-sm">
+          {/* // SECTION: Présentation & visuels */}
+          <h2 className="mb-2 text-lg font-semibold text-gray-900">
+            Visuels et identité
+          </h2>
+          <p className="mb-6 text-sm text-gray-600">
+            Ajoutez un logo et une image de couverture pour renforcer l’identité
+            visuelle de votre entreprise.
+          </p>
+          <div className="grid grid-cols-1 gap-x-6 gap-y-6 sm:grid-cols-6">
+            <div className="col-span-full">
+              <Field>
+                <Label>Logo de l’entreprise</Label>
+                <div className="mt-2 flex items-center gap-x-4">
                   <UserCircleIcon
                     aria-hidden="true"
                     className="size-24 text-gray-300"
                   />
-                  <button
+                  <Button
                     type="button"
-                    className="rounded-md bg-white px-2.5 py-1.5 text-sm font-semibold text-gray-900 shadow-xs ring-1 ring-gray-300 ring-inset hover:bg-gray-50"
                     aria-label="Changer le logo de l’entreprise"
                   >
                     Modifier le logo
-                  </button>
+                  </Button>
                 </div>
-              </div>
-              <div className="col-span-full">
-                <label
-                  htmlFor="cover-photo"
-                  className="block text-sm font-medium text-gray-900"
-                >
-                  Image de couverture
-                </label>
-                <div className="mt-2 flex justify-center rounded-lg border border-dashed border-gray-900/25 px-6 py-10">
+              </Field>
+            </div>
+            <div className="col-span-full">
+              <Field>
+                <Label htmlFor="cover-photo">Image de couverture</Label>
+                <div className="mt-2 flex justify-center rounded-lg border border-dashed border-gray-300 bg-white px-6 py-10">
                   <div className="text-center">
                     <PhotoIcon
                       aria-hidden="true"
                       className="mx-auto size-12 text-gray-300"
                     />
-                    <div className="mt-4 flex text-sm text-gray-600">
-                      <label
-                        htmlFor="file-upload"
-                        className="relative cursor-pointer rounded-md bg-white font-semibold text-indigo-600 focus-within:ring-2 focus-within:ring-indigo-600 focus-within:ring-offset-2 focus-within:outline-hidden hover:text-indigo-500"
-                      >
-                        <span>Téléverser un fichier</span>
-                        <input
-                          id="file-upload"
-                          name="file-upload"
-                          type="file"
-                          className="sr-only"
-                          aria-label="Téléverser une image de couverture"
-                        />
-                      </label>
-                      <p className="pl-1">ou glissez-déposez un fichier</p>
+                    <div className="mt-4 flex items-center justify-center text-sm text-gray-600">
+                      <Field>
+                        <Label htmlFor="file-upload">
+                          <span>Téléverser un fichier</span>
+                          <input
+                            name="file-upload"
+                            type="file"
+                            className="sr-only"
+                            aria-label="Téléverser une image de couverture"
+                          />
+                        </Label>
+                      </Field>
+                      <span className="px-2 text-gray-400">|</span>
+                      <span>ou glissez-déposez un fichier</span>
                     </div>
-                    <p className="text-xs text-gray-600">
+                    <p className="mt-2 text-xs text-gray-500">
                       PNG, JPG ou GIF (10 Mo max)
                     </p>
                   </div>
                 </div>
-              </div>
+              </Field>
             </div>
           </div>
-          <div className="border-b border-gray-900/10 pb-12">
-            <h2 className="text-base font-semibold text-gray-900">
-              Services proposés
-            </h2>
-            <p className="mt-1 text-sm text-gray-600">
-              Listez les services que vous proposez avec leur description, leur
-              tarif et leur durée. Ces informations seront visibles sur votre
-              page publique.
-            </p>
-            <div className="mt-6 space-y-8">
-              {/* Structure directe pour un service, à rendre dynamique plus tard */}
-              <div className="grid grid-cols-1 items-end gap-x-6 gap-y-4 sm:grid-cols-6">
-                <div className="sm:col-span-3">
-                  <label
-                    className="block text-sm font-medium text-gray-900"
-                    htmlFor="service-name-0"
-                  >
-                    Nom du service
-                  </label>
-                  <input
-                    type="text"
-                    name="service-name-0"
-                    id="service-name-0"
-                    aria-label="Nom du service"
-                    className="mt-2 block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 shadow-sm outline-1 outline-gray-300 focus:outline-indigo-600 sm:text-sm"
-                  />
-                </div>
-                <div className="sm:col-span-2">
-                  <label
-                    className="block text-sm font-medium text-gray-900"
-                    htmlFor="service-duration-0"
-                  >
-                    Durée (en minutes)
-                  </label>
-                  <input
-                    type="number"
-                    name="service-duration-0"
-                    id="service-duration-0"
-                    aria-label="Durée du service"
-                    className="mt-2 block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 shadow-sm outline-1 outline-gray-300 focus:outline-indigo-600 sm:text-sm"
-                  />
-                </div>
-                <div className="sm:col-span-1">
-                  <label
-                    className="block text-sm font-medium text-gray-900"
-                    htmlFor="service-price-0"
-                  >
-                    Prix (€)
-                  </label>
-                  <input
-                    type="number"
-                    name="service-price-0"
-                    id="service-price-0"
-                    aria-label="Prix du service"
-                    className="mt-2 block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 shadow-sm outline-1 outline-gray-300 focus:outline-indigo-600 sm:text-sm"
-                  />
-                </div>
-                <div className="sm:col-span-6">
-                  <label
-                    className="block text-sm font-medium text-gray-900"
-                    htmlFor="service-description-0"
-                  >
-                    Description du service
-                  </label>
-                  <textarea
-                    name="service-description-0"
-                    id="service-description-0"
-                    rows={2}
-                    aria-label="Description du service"
-                    className="mt-2 block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 outline-gray-300 placeholder:text-gray-400 focus:outline-indigo-600 sm:text-sm"
-                    placeholder="Décrivez en quelques mots le service proposé"
-                  />
-                </div>
-              </div>
-              <div>
-                <button
-                  type="button"
-                  className="mt-4 inline-flex items-center rounded-md bg-indigo-50 px-3 py-1.5 text-sm font-medium text-indigo-700 ring-1 ring-indigo-600/20 ring-inset hover:bg-indigo-100"
-                  aria-label="Ajouter un service"
-                >
-                  + Ajouter un service
-                </button>
-              </div>
-            </div>
-          </div>
+        </section>
 
-          <div className="border-b border-gray-900/10 pb-12">
-            <h2 className="text-base/7 font-semibold text-gray-900">
+        {/* SECTION: Coordonnées */}
+        <section className="rounded-xl border border-gray-100 bg-white/80 px-6 py-8 shadow-sm">
+          <form>
+            {/* // SECTION: Coordonnées */}
+            <h2 className="mb-2 text-lg font-semibold text-gray-900">
               Coordonnées et localisation
             </h2>
-            <p className="mt-1 text-sm/6 text-gray-600">
-              Indiquez votre adresse pour rassurer vos clients sur votre
-              localisation et faciliter leur venue.
+            <p className="mb-6 text-sm text-gray-600">
+              Indiquez vos coordonnées pour faciliter la prise de contact et la
+              venue de vos clients.
             </p>
-
-            <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
+            <div className="grid grid-cols-1 gap-x-6 gap-y-6 sm:grid-cols-6">
               <div className="sm:col-span-3">
-                <label
-                  htmlFor="country"
-                  className="block text-sm/6 font-medium text-gray-900"
-                >
-                  Pays
-                </label>
-                <div className="mt-2 grid grid-cols-1">
-                  <select
-                    id="country"
-                    name="country"
-                    autoComplete="country-name"
-                    className="col-start-1 row-start-1 w-full appearance-none rounded-md bg-white py-1.5 pr-8 pl-3 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
-                  >
-                    <option>France</option>
-                    <option>Belgique</option>
-                  </select>
-                  <ChevronDownIcon
-                    aria-hidden="true"
-                    className="pointer-events-none col-start-1 row-start-1 mr-2 size-5 self-center justify-self-end text-gray-500 sm:size-4"
-                  />
-                </div>
+                <Field>
+                  <Label htmlFor="country">Pays</Label>
+                  <div className="relative mt-2">
+                    <Select
+                      name="country"
+                      autoComplete="country-name"
+                      aria-label="Pays"
+                    >
+                      <option>France</option>
+                      <option>Belgique</option>
+                    </Select>
+                    <ChevronDownIcon
+                      aria-hidden="true"
+                      className="pointer-events-none absolute top-3 right-2 size-5 text-gray-400"
+                    />
+                  </div>
+                </Field>
               </div>
-
               <div className="col-span-full">
-                <label
-                  htmlFor="street-address"
-                  className="block text-sm/6 font-medium text-gray-900"
-                >
-                  Adresse
-                </label>
-                <div className="mt-2">
-                  <input
-                    id="street-address"
-                    name="street-address"
+                <Field>
+                  <Label htmlFor="street-address">Adresse</Label>
+                  <Input
+                    name="streetaddress"
                     type="text"
                     autoComplete="street-address"
-                    className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
+                    aria-label="Adresse"
+                    placeholder="Adresse complète"
                   />
-                </div>
+                </Field>
               </div>
-
               <div className="sm:col-span-2 sm:col-start-1">
-                <label
-                  htmlFor="city"
-                  className="block text-sm/6 font-medium text-gray-900"
-                >
-                  Ville
-                </label>
-                <div className="mt-2">
-                  <input
-                    id="city"
+                <Field>
+                  <Label htmlFor="city">Ville</Label>
+                  <Input
                     name="city"
                     type="text"
                     autoComplete="address-level2"
-                    className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
+                    aria-label="Ville"
+                    placeholder="Ville"
                   />
-                </div>
+                </Field>
               </div>
-
               <div className="sm:col-span-2">
-                <label
-                  htmlFor="postal-code"
-                  className="block text-sm/6 font-medium text-gray-900"
-                >
-                  Code postal
-                </label>
-                <div className="mt-2">
-                  <input
-                    id="postal-code"
-                    name="postal-code"
-                    type="text"
+                <Field>
+                  <Label htmlFor="postal-code">Code postal</Label>
+                  <Input
+                    name="postalcode"
+                    type="number"
                     autoComplete="postal-code"
-                    className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
+                    aria-label="Code postal"
+                    placeholder="Code postal"
                   />
-                </div>
+                </Field>
               </div>
             </div>
-          </div>
+          </form>
+        </section>
 
-          <div className="border-b border-gray-900/10 pb-12">
-            <h2 className="text-base font-semibold text-gray-900">
-              Horaires d’ouverture
-            </h2>
-            <p className="mt-1 text-sm text-gray-600">
-              Indiquez vos horaires d’ouverture pour chaque jour de la semaine.
-              Vos clients pourront consulter ces informations sur votre page
-              publique.
-            </p>
-            <div className="mt-10 space-y-2">
-              {[
-                'Lundi',
-                'Mardi',
-                'Mercredi',
-                'Jeudi',
-                'Vendredi',
-                'Samedi',
-                'Dimanche',
-              ].map((day, idx) => (
-                <div
-                  key={day}
-                  className={`grid grid-cols-1 gap-y-2 rounded-md sm:grid-cols-12 sm:items-center sm:gap-x-4 ${
-                    idx % 2 === 0 ? 'bg-gray-50' : 'bg-white'
-                  } px-2 py-2`}
-                >
-                  <div className="text-sm font-medium text-gray-900 sm:col-span-2">
-                    {day}
-                  </div>
-                  <div className="sm:col-span-4">
-                    <input
-                      type="time"
+        {/* SECTION: Horaires */}
+        <section className="rounded-xl border border-gray-100 bg-gray-50 px-6 py-8 shadow-sm">
+          {/* // SECTION: Horaires */}
+          <h2 className="mb-2 text-lg font-semibold text-gray-900">
+            Horaires d’ouverture
+          </h2>
+          <p className="mb-6 text-sm text-gray-600">
+            Précisez vos horaires d’ouverture pour chaque jour de la semaine.
+          </p>
+          <div className="space-y-2">
+            {[
+              'Lundi',
+              'Mardi',
+              'Mercredi',
+              'Jeudi',
+              'Vendredi',
+              'Samedi',
+              'Dimanche',
+            ].map((day, idx) => (
+              <div
+                key={day}
+                className={`grid grid-cols-1 gap-y-2 rounded-md sm:grid-cols-12 sm:items-center sm:gap-x-4 ${
+                  idx % 2 === 0 ? 'bg-white' : 'bg-gray-50'
+                } px-2 py-2`}
+              >
+                <div className="text-sm font-medium text-gray-900 sm:col-span-2">
+                  {day}
+                </div>
+                <div className="sm:col-span-4">
+                  <Field>
+                    <Input
+                      type="datetime-local"
                       name={`${day.toLowerCase()}-start`}
                       id={`${day.toLowerCase()}-start`}
                       aria-label={`Heure de début ${day}`}
-                      className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 shadow-sm outline-1 -outline-offset-1 outline-gray-300 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm"
+                      placeholder="Début"
                     />
-                  </div>
-                  <div className="sm:col-span-4">
-                    <input
+                  </Field>
+                </div>
+                <div className="sm:col-span-4">
+                  <Field>
+                    <Input
                       type="time"
                       name={`${day.toLowerCase()}-end`}
                       id={`${day.toLowerCase()}-end`}
                       aria-label={`Heure de fin ${day}`}
-                      className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 shadow-sm outline-1 -outline-offset-1 outline-gray-300 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm"
+                      placeholder="Fin"
                     />
-                  </div>
-                  <div className="text-sm text-gray-500 sm:col-span-2">
-                    <span className="hidden sm:inline">Heure d’ouverture</span>
-                  </div>
+                  </Field>
                 </div>
-              ))}
+                <div className="text-xs text-gray-500 sm:col-span-2">
+                  <span className="hidden sm:inline">Heure d’ouverture</span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* SECTION: Services proposés */}
+        <section className="rounded-xl border border-gray-100 bg-white/80 px-6 py-8 shadow-sm">
+          {/* // SECTION: Services proposés */}
+          <h2 className="mb-2 text-lg font-semibold text-gray-900">
+            Services proposés
+          </h2>
+          <p className="mb-6 text-sm text-gray-600">
+            Présentez vos services avec description, tarif et durée. Ces
+            informations seront visibles sur votre page publique.
+          </p>
+          <div className="space-y-8">
+            {/* Structure directe pour un service, à rendre dynamique plus tard */}
+            <div className="grid grid-cols-1 items-end gap-x-6 gap-y-4 sm:grid-cols-6">
+              <div className="sm:col-span-3">
+                <Field>
+                  <Label htmlFor="service-name-0">Nom du service</Label>
+                  <Input
+                    type="text"
+                    name="servicename"
+                    aria-label="Nom du service"
+                    placeholder="Nom du service"
+                  />
+                </Field>
+              </div>
+              <div className="sm:col-span-2">
+                <Field>
+                  <Label htmlFor="service-duration-0">Durée (min)</Label>
+                  <Input
+                    type="number"
+                    name="serviceduration"
+                    aria-label="Durée du service"
+                    placeholder="Durée"
+                  />
+                </Field>
+              </div>
+              <div className="sm:col-span-1">
+                <Field>
+                  <Label htmlFor="service-price-0">Prix (€)</Label>
+                  <Input
+                    type="number"
+                    name="serviceprice"
+                    aria-label="Prix du service"
+                    placeholder="Prix"
+                  />
+                </Field>
+              </div>
+              <div className="sm:col-span-6">
+                <Field>
+                  <Label htmlFor="service-description-0">
+                    Description du service
+                  </Label>
+                  <Textarea
+                    name="servicedescription"
+                    id="service-description-0"
+                    rows={2}
+                    aria-label="Description du service"
+                    placeholder="Décrivez en quelques mots le service proposé"
+                  />
+                </Field>
+              </div>
+            </div>
+            <div>
+              <Button
+                type="button"
+                className="mt-4"
+                aria-label="Ajouter un service"
+                outline
+              >
+                + Ajouter un service
+              </Button>
             </div>
           </div>
-          <div className="border-b border-gray-900/10 pb-12">
-            <h2 className="text-base font-semibold text-gray-900">
-              Liens sociaux et site web
-            </h2>
-            <p className="mt-1 text-sm text-gray-600">
-              Ajoutez vos liens vers les réseaux sociaux ou votre site web pour
-              renforcer votre présence en ligne et la confiance de vos clients.
-            </p>
-            <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
-              <div className="sm:col-span-4">
-                <label
-                  htmlFor="username"
-                  className="block text-sm font-medium text-gray-900"
-                >
-                  Lien du site web
-                </label>
+        </section>
+
+        {/* SECTION: Réseaux sociaux */}
+        <section className="rounded-xl border border-gray-100 bg-gray-50 px-6 py-8 shadow-sm">
+          {/* // SECTION: Réseaux sociaux */}
+          <h2 className="mb-2 text-lg font-semibold text-gray-900">
+            Réseaux sociaux & site web
+          </h2>
+          <p className="mb-6 text-sm text-gray-600">
+            Ajoutez vos liens pour renforcer votre présence en ligne et la
+            confiance de vos clients.
+          </p>
+          <div className="grid grid-cols-1 gap-x-6 gap-y-6 sm:grid-cols-6">
+            <div className="sm:col-span-4">
+              <Field>
+                <Label htmlFor="username">URL de votre page publique</Label>
                 <div className="mt-2">
-                  <div className="flex items-center rounded-md bg-white pl-3 outline-1 -outline-offset-1 outline-gray-300 focus-within:outline-2 focus-within:-outline-offset-2 focus-within:outline-indigo-600">
+                  <div className="flex items-center rounded-md bg-white pl-3 outline-1 outline-gray-300 focus-within:outline-2 focus-within:outline-blue-600">
                     <div className="shrink-0 text-base text-gray-500 select-none sm:text-sm">
                       klyx-agenda.com/pro/
                     </div>
-                    <input
+                    <Input
                       id="username"
                       name="username"
                       type="text"
-                      placeholder="janesmith"
+                      placeholder="votre-identifiant"
                       aria-label="Identifiant de la page publique"
-                      className="block min-w-0 grow py-1.5 pr-3 pl-1 text-base text-gray-900 placeholder:text-gray-400 focus:outline-none sm:text-sm"
                     />
                   </div>
                 </div>
-              </div>
-              <div className="sm:col-span-3">
-                <label
-                  htmlFor="facebook"
-                  className="block text-sm font-medium text-gray-900"
-                >
-                  Lien Facebook
-                </label>
-                <div className="mt-2">
-                  <input
-                    type="url"
-                    name="facebook"
-                    id="facebook"
-                    placeholder="https://facebook.com/votrepage"
-                    aria-label="Lien Facebook"
-                    className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm"
-                  />
-                </div>
-              </div>
-              <div className="sm:col-span-3">
-                <label
-                  htmlFor="instagram"
-                  className="block text-sm font-medium text-gray-900"
-                >
-                  Lien Instagram
-                </label>
-                <div className="mt-2">
-                  <input
-                    type="url"
-                    name="instagram"
-                    id="instagram"
-                    placeholder="https://instagram.com/votreprofil"
-                    aria-label="Lien Instagram"
-                    className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm"
-                  />
-                </div>
-              </div>
-              <div className="sm:col-span-3">
-                <label
+              </Field>
+            </div>
+            <div className="sm:col-span-3">
+              <Field>
+                <Label htmlFor="facebook">Lien Facebook</Label>
+                <Input
+                  type="url"
+                  name="facebook"
+                  id="facebook"
+                  placeholder="https://facebook.com/votrepage"
+                  aria-label="Lien Facebook"
+                />
+              </Field>
+            </div>
+            <div className="sm:col-span-3">
+              <Field>
+                <Label htmlFor="instagram">Lien Instagram</Label>
+                <Input
+                  type="url"
+                  name="instagram"
+                  id="instagram"
+                  placeholder="https://instagram.com/votreprofil"
+                  aria-label="Lien Instagram"
+                />
+              </Field>
+            </div>
+            <div className="sm:col-span-3">
+              <Field>
+                <Label
                   htmlFor="linkedin"
                   className="block text-sm font-medium text-gray-900"
                 >
                   Lien LinkedIn
-                </label>
-                <div className="mt-2">
-                  <input
-                    type="url"
-                    name="linkedin"
-                    id="linkedin"
-                    placeholder="https://linkedin.com/in/votreprofil"
-                    aria-label="Lien LinkedIn"
-                    className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm"
-                  />
-                </div>
-              </div>
-              <div className="sm:col-span-3">
-                <label
-                  htmlFor="tiktok"
-                  className="block text-sm font-medium text-gray-900"
-                >
-                  Lien TikTok
-                </label>
-                <div className="mt-2">
-                  <input
-                    type="url"
-                    name="tiktok"
-                    id="tiktok"
-                    placeholder="https://tiktok.com/@votreprofil"
-                    aria-label="Lien TikTok"
-                    className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm"
-                  />
-                </div>
-              </div>
-              <div className="sm:col-span-6">
-                <label
-                  htmlFor="website"
-                  className="block text-sm font-medium text-gray-900"
-                >
-                  Site web personnel ou professionnel
-                </label>
-                <div className="mt-2">
-                  <input
-                    type="url"
-                    name="website"
-                    id="website"
-                    placeholder="https://www.votresite.com"
-                    aria-label="Site web personnel ou professionnel"
-                    className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm"
-                  />
-                </div>
-              </div>
+                </Label>
+                <Input
+                  type="url"
+                  name="linkedin"
+                  id="linkedin"
+                  placeholder="https://linkedin.com/in/votreprofil"
+                  aria-label="Lien LinkedIn"
+                />
+              </Field>
+            </div>
+            <div className="sm:col-span-3">
+              <Field>
+                <Label htmlFor="tiktok">Lien TikTok</Label>
+                <Input
+                  type="url"
+                  name="tiktok"
+                  id="tiktok"
+                  placeholder="https://tiktok.com/@votreprofil"
+                  aria-label="Lien TikTok"
+                />
+              </Field>
+            </div>
+            <div className="sm:col-span-6">
+              <Field>
+                <Label htmlFor="website">Site web professionnel</Label>
+                <Input
+                  type="url"
+                  name="website"
+                  id="website"
+                  placeholder="https://www.votresite.com"
+                  aria-label="Site web professionnel"
+                />
+              </Field>
             </div>
           </div>
-        </div>
+        </section>
 
-        <div className="mt-6 flex items-center justify-end gap-x-6">
-          <button type="button" className="text-sm font-semibold text-gray-900">
-            Annuler
-          </button>
-          <button
-            type="submit"
-            className="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-xs hover:bg-indigo-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-          >
-            Enregistrer
-          </button>
-        </div>
-      </form>
-      <div className="mt-8 flex items-center justify-end">
-        <Link
-          href=""
-          className="inline-flex items-center gap-2 text-sm font-medium text-blue-600 hover:underline focus:outline-none"
-          aria-label="Voir ma page publique (nouvel onglet)"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Voir ma page publique
-          <ArrowTopRightOnSquareIcon
-            className="h-4 w-4 text-blue-500"
-            aria-hidden="true"
-          />
-        </Link>
+        {/* SECTION: URL publique + aperçu */}
+        <section className="rounded-xl border border-gray-100 bg-white/80 px-6 py-8 shadow-sm">
+          {/* // SECTION: URL publique + aperçu */}
+          <h2 className="mb-2 text-lg font-semibold text-gray-900">
+            Aperçu de votre page publique
+          </h2>
+          <p className="mb-4 text-sm text-gray-600">
+            Consultez un aperçu de votre page telle qu’elle apparaîtra à vos
+            clients.
+          </p>
+          <div className="flex items-center justify-between">
+            <span className="text-base text-gray-500">
+              klyx-agenda.com/pro/
+              <span className="font-semibold text-gray-800">
+                votre-identifiant
+              </span>
+            </span>
+            <Link
+              href=""
+              className="inline-flex items-center gap-2 text-sm font-medium text-blue-600 hover:underline focus:outline-indigo-600"
+              aria-label="Voir ma page publique (nouvel onglet)"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Voir ma page publique
+              <ArrowTopRightOnSquareIcon
+                className="h-4 w-4 text-blue-500"
+                aria-hidden="true"
+              />
+            </Link>
+          </div>
+        </section>
+      </div>
+      <div className="mt-8 flex items-center justify-end gap-x-6">
+        <Button type="button" plain>
+          Annuler
+        </Button>
+        <Button type="submit">Enregistrer</Button>
       </div>
     </section>
   )
