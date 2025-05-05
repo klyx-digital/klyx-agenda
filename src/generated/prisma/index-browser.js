@@ -130,8 +130,11 @@ exports.Prisma.UserScalarFieldEnum = {
   createdAt: 'createdAt',
   plan: 'plan',
   bio: 'bio',
-  image: 'image',
-  location: 'location',
+  logoImage: 'logoImage',
+  bannerImage: 'bannerImage',
+  addressLine1: 'addressLine1',
+  postalCode: 'postalCode',
+  city: 'city',
   website: 'website',
   socialLinks: 'socialLinks'
 };
@@ -141,6 +144,7 @@ exports.Prisma.ServiceScalarFieldEnum = {
   name: 'name',
   duration: 'duration',
   price: 'price',
+  description: 'description',
   userId: 'userId',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
@@ -231,6 +235,16 @@ exports.Role = exports.$Enums.Role = {
 exports.SubscriptionPlan = exports.$Enums.SubscriptionPlan = {
   FREE: 'FREE',
   PREMIUM: 'PREMIUM'
+};
+
+exports.DayOfWeek = exports.$Enums.DayOfWeek = {
+  SUNDAY: 'SUNDAY',
+  MONDAY: 'MONDAY',
+  TUESDAY: 'TUESDAY',
+  WEDNESDAY: 'WEDNESDAY',
+  THURSDAY: 'THURSDAY',
+  FRIDAY: 'FRIDAY',
+  SATURDAY: 'SATURDAY'
 };
 
 exports.Sender = exports.$Enums.Sender = {
