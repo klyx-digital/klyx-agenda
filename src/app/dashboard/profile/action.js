@@ -37,6 +37,10 @@ export async function infoEntreprise(state, formData) {
     if (name) updateData.businessName = name
     if (about) updateData.bio = about
 
+    if (Object.keys(updateData).length === 0) {
+      return { message: 'Aucune donnée à mettre à jour.' }
+    }
+
     await prisma.user.update({
       where: {
         id: userId,
@@ -87,6 +91,10 @@ export async function LocalisationEntreprise(state, formData) {
     if (addressLine1) updateData.addressLine1 = addressLine1
     if (postalCode) updateData.postalCode = postalCode
     if (city) updateData.city = city
+
+    if (Object.keys(updateData).length === 0) {
+      return { message: 'Aucune donnée à mettre à jour.' }
+    }
 
     await prisma.user.update({
       where: { id: userId },
@@ -157,13 +165,13 @@ export async function updateHoraires(state, formData) {
 
   try {
     const jours = [
+      'dimanche',
       'lundi',
       'mardi',
       'mercredi',
       'jeudi',
       'vendredi',
       'samedi',
-      'dimanche',
     ]
 
     const enumDays = [
@@ -272,9 +280,7 @@ export async function updateService(state, formData) {
   }
 }
 
-// Schéma Zod pour les liens sociaux et site web
 const reseauxSchema = z.object({
-  username: z.string().optional(),
   facebook: z.string().url().optional(),
   instagram: z.string().url().optional(),
   linkedin: z.string().url().optional(),
@@ -282,7 +288,6 @@ const reseauxSchema = z.object({
   website: z.string().url().optional(),
 })
 
-// Fonction pour mettre à jour les liens sociaux et le site web
 export async function updateLinks(state, formData) {
   const session = await auth()
   const userId = session.user?.id
@@ -291,47 +296,66 @@ export async function updateLinks(state, formData) {
     throw new Error('Utilisateur non authentifié')
   }
 
-  const validatedFields = reseauxSchema.safeParse({
-    username: formData.get('username'),
+  // Schéma Zod pour les liens sociaux et site web
+  const rawFields = {
     facebook: formData.get('facebook'),
     instagram: formData.get('instagram'),
     linkedin: formData.get('linkedin'),
     tiktok: formData.get('tiktok'),
     website: formData.get('website'),
-  })
+  }
+
+  // Ne garde que les champs non vides
+  const filteredFields = Object.fromEntries(
+    Object.entries(rawFields).filter(
+      ([_, value]) => value && value.trim() !== '',
+    ),
+  )
+
+  // Validation des champs non vides
+  const validatedFields = reseauxSchema.safeParse(filteredFields)
 
   if (!validatedFields.success) {
     return {
       errors: validatedFields.error.flatten().fieldErrors,
-      message: 'Certains liens sont invalides. Veuillez vérifier leur format.',
+      message: 'Certains liens sont invalides.',
     }
   }
 
-  const { username, facebook, instagram, linkedin, tiktok, website } =
-    validatedFields.data
+  const data = validatedFields.data
 
-  try {
-    const updateData = {}
-    if (username) updateData.username = username
-    if (facebook) updateData.facebook = facebook
-    if (instagram) updateData.instagram = instagram
-    if (linkedin) updateData.linkedin = linkedin
-    if (tiktok) updateData.tiktok = tiktok
-    if (website) updateData.website = website
+  // Construction dynamique des données à mettre à jour
+  const updateData = {}
 
-    await prisma.user.update({
-      where: { id: userId },
-      data: updateData,
-    })
+  if (data.website) {
+    updateData.website = data.website
+  }
 
-    return { message: 'Liens mis à jour avec succès.' }
-  } catch (error) {
-    console.error(error)
+  // Regrouper les liens sociaux dans un objet séparé
+  const socialLinks = {}
+
+  if (data.facebook) socialLinks.facebook = data.facebook
+  if (data.instagram) socialLinks.instagram = data.instagram
+  if (data.linkedin) socialLinks.linkedin = data.linkedin
+  if (data.tiktok) socialLinks.tiktok = data.tiktok
+
+  if (Object.keys(socialLinks).length > 0) {
+    updateData.socialLinks = socialLinks
+  }
+
+  if (Object.keys(updateData).length === 0) {
     return {
-      message:
-        'Impossible de mettre à jour vos liens sociaux. Veuillez réessayer plus tard.',
+      message: 'Aucune donnée à mettre à jour.',
     }
   }
+
+  // Met à jour uniquement les données présentes
+  await prisma.user.update({
+    where: { id: userId },
+    data: updateData,
+  })
+
+  return { message: 'Liens mis à jour avec succès.' }
 }
 
 const coordonneesSchema = z.object({
@@ -375,6 +399,10 @@ export async function updateCoordonnees(state, formData) {
     if (addressLine1) updateData.addressLine1 = addressLine1
     if (postalCode) updateData.postalCode = postalCode
     if (city) updateData.city = city
+
+    if (Object.keys(updateData).length === 0) {
+      return { message: 'Aucune donnée à mettre à jour.' }
+    }
 
     await prisma.user.update({
       where: { id: userId },

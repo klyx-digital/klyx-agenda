@@ -7,8 +7,8 @@ import clsx from 'clsx'
 
 import { Container } from '@/components/ui/Container'
 import backgroundImage from '@/images/background-features.jpg'
-import paypal from '@/images/screenshots/paypal.jpg'
-import rdv from '@/images/screenshots/rdv.jpg'
+import paiement from '@/images/screenshots/paiement2.jpg'
+import Dashboard from '@/images/screenshots/Dashboard.png'
 import rapelle from '@/images/screenshots/rapelle.jpg'
 import reserved from '@/images/screenshots/reserved.jpg'
 
@@ -23,7 +23,7 @@ const features = [
     title: 'Paiement en ligne sécurisé',
     description:
       'Proposez le paiement via Stripe ou PayPal. Les clients règlent à l’avance, vous réduisez les annulations et gagnez en sérénité.',
-    image: paypal,
+    image: paiement,
   },
   {
     title: 'Rappels automatiques par email & SMS',
@@ -35,7 +35,7 @@ const features = [
     title: 'Tableau de bord clair & complet',
     description:
       'Visualisez vos rendez-vous, paiements et créneaux disponibles en un coup d’œil. Un vrai assistant pro au quotidien.',
-    image: rdv,
+    image: Dashboard,
   },
 ]
 

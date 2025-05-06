@@ -10,7 +10,7 @@ import {
   updateLinks,
   saveLogoOrBanner,
 } from './action'
-import { PhotoIcon, UserCircleIcon } from '@heroicons/react/24/solid'
+import { PhotoIcon } from '@heroicons/react/24/solid'
 import { ArrowTopRightOnSquareIcon } from '@heroicons/react/16/solid'
 import { Input } from '@/components/ui/input'
 import Link from 'next/link'
@@ -60,13 +60,13 @@ export function FormPublique() {
     saveLogoOrBanner,
     initialState,
   )
+
   const [logo, setLogo] = useState(null)
   const [banner, setBanner] = useState(null)
 
   const CLOUDINARY_CLOUD_NAME = process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME
   const UPLOAD_PRESET = process.env.NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET
 
-  // Nouveau handleUpload pour fichiers contrôlés (logo/banner)
   const handleUpload = async (e, type) => {
     const file = e.target.files?.[0]
     if (!file) return
